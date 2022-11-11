@@ -7,7 +7,10 @@ public class Player : MonoBehaviour
     [SerializeField] private string nama;
     private int koinDarah = 0;
     private int famePoint = 0;
-    private int hargaKerakTelor = 0;
+    private int hargaKerakTelorAwal = 1;
+    private int hargaKerakTelorAkhir;
+
+    // Cek tempat di mana(?)
 
     
     // Start is called before the first frame update
@@ -19,7 +22,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Debug.Log(hargaKerakTelorAkhir);
+        // Debug.Log(koinDarah);
     }
 
 
@@ -44,15 +48,18 @@ public class Player : MonoBehaviour
     public void notEnough(){
         //Ntr ada Canvas d sini yg blg not enough begitu.
     }
+    public void sudahMaxUpgrade(){
+        //Ntr ada Canvas d sini yg blg not enough begitu.
+    }
 
 
 
 
 
     public int getHarga(){ //Kalo org mo beli kan cek ini
-        return hargaKerakTelor;
+        return hargaKerakTelorAkhir;
     }
     public void changeHarga(int hargaKT){ //masukkin + - kalo mo pake
-        hargaKerakTelor += hargaKT;
+        hargaKerakTelorAkhir = hargaKerakTelorAwal + hargaKT;
     }
 }

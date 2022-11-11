@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostBehavio : MonoBehaviour
 {
-    [SerializeField] private Transform pos1, tengah, pos2;
+    [SerializeField] private Transform pos1, tengah1, tengah2, pos2;
     GhostIdentity GhostID;
     // private int KerakTelor;//Mikir dl..
     private float waktuDatang;
@@ -16,15 +16,17 @@ public class GhostBehavio : MonoBehaviour
 
 
     private int numberRandom;
-    private float kecepatan, jarak1, jarak2;
+    private float kecepatan, jarak11, jarak12, jarak21, jarak22;
     private void Awake() {
         GhostID = GetComponentInParent<GhostIdentity>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        jarak1 = pos1.position.x - tengah.position.x;
-        jarak2 = tengah.position.x - pos2.position.x;
+        jarak11 = pos1.position.x - tengah1.position.x;//DARI KIRI
+        jarak12 = tengah1.position.x - pos2.position.x;//DARI KIRI
+        jarak21 = tengah2.position.x - pos2.position.x;//DARI KANAN
+        jarak22 = pos1.position.x - tengah2.position.x;//DARI KANAN
         hitung();
         tujuan = pos1.position;
         adaUpgrade1 = false;
@@ -41,38 +43,41 @@ public class GhostBehavio : MonoBehaviour
             if(adaUpgrade1 && (transform.position == pos1.position ||transform.position == pos2.position)) {
                 hitung(); // kalo ada upgrade hrs hitung ulang dl tp kalo si target dh nyampe posisi
                 adaUpgrade1 = false;
-                Debug.Log("1");
+                // Debug.Log("1");
             }
             else if(transform.position == pos1.position ||transform.position == pos2.position){
                 numberRandom = Random.Range(1,3);
                 // Debug.Log("2");
-                Debug.Log(numberRandom);
+                // Debug.Log(numberRandom);
                 if(numberRandom == 1){
                     transform.position = pos1.position;
-                    kecepatan = jarak1/simpanWaktu1;
+                    kecepatan = jarak11/simpanWaktu1;
+                    tujuan = tengah1.position;
                     //INI NTR ROTASI JGN LUPA 
                 }
                 else{
                     transform.position = pos2.position;
-                    kecepatan = jarak2/simpanWaktu1;
+                    kecepatan = jarak21/simpanWaktu1;
+                    tujuan = tengah2.position;
                     //INI NTR ROTASI JGN LUPA 
                 }
                     
-                tujuan = tengah.position;
+                
             }
-            else if(transform.position == tengah.position){
+            else if(transform.position == tengah1.position || transform.position == tengah2.position){
                 //WAIT
                 timer -= Time.deltaTime;
                 if(timer <=0){
+                    GhostID.beli();
                     timer = simpanWaktu2;
                         
                     if(numberRandom == 1){
-                        kecepatan = jarak2/simpanWaktu3;
+                        kecepatan = jarak12/simpanWaktu3;
                         tujuan = pos2.position;
                             
                     }
                     else if(numberRandom == 2){
-                        kecepatan = jarak1/simpanWaktu3;
+                        kecepatan = jarak22/simpanWaktu3;
                         tujuan = pos1.position;
                     }
                         

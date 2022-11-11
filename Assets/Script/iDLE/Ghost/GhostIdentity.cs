@@ -75,15 +75,22 @@ public class GhostIdentity : MonoBehaviour
 
 
     public void upgrade_Level(){ //INI buat button Upgrade
-        if(Players.getKoin() >= hargaKoinUpgradeAkhir && Players.getFP() >= hargaFPUpgradeAkhir){
-            levelUpgrade++;
-            Players.changeKoin(-hargaKoinUpgradeAkhir);
-            Players.changeFP(-hargaFPUpgradeAkhir);
-            adaUpgrade = true;
+        if(levelUpgrade == 20){
+            Players.sudahMaxUpgrade();
         }
         else{
-            Players.notEnough();
+            if(Players.getKoin() >= hargaKoinUpgradeAkhir && Players.getFP() >= hargaFPUpgradeAkhir){
+                levelUpgrade++;
+                Players.changeKoin(-hargaKoinUpgradeAkhir);
+                Players.changeFP(-hargaFPUpgradeAkhir);
+                // jgn lupa ganti hargaupgradenya, eh tp gausa ya?
+                adaUpgrade = true;
+            }
+            else{
+                Players.notEnough();
+            }
         }
+        
         
     }
 
@@ -92,7 +99,7 @@ public class GhostIdentity : MonoBehaviour
         int totalHarga = totalKerakTelorAkhir * sempanHarga;
         int total = totalHarga; //Ntr ditambahin bonus : Kompor, Wajan Kecil, 
         Players.changeKoin(total*totalHantuDatangAkhir);
-
+        Debug.Log(Players.getKoin());
     }
 
     void count(){
