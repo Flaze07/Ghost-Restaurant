@@ -87,7 +87,7 @@ public class BahanMakanan : MonoBehaviour
             }
         }
     }
-
+// aa
     // cek unlock ato tidak - eh tp gatau deh, keknya bs di unlock d canvas biar gabisa diteken..
     // private bool upgrade_cek(int x){
     //     if(x == 8){
