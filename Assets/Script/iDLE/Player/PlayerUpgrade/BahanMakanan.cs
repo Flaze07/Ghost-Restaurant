@@ -10,7 +10,7 @@ public class BahanMakanan : MonoBehaviour
 
     // uh.. ya
     private int[] hargaAkhir = {0,0,0,0,0,0,0,0,0,0,0,0};
-    private int[] level = {5,0,0,0,0,0,0,0,0,0,0,0};
+    private int[] level = {0,0,0,0,0,0,0,0,0,0,0,0};
     private int[] Rank = {1,1,1,1,1,1,1,1,1,1,1,1};
     [SerializeField] private int[] upgrade_awal;
     private int[] upgrade_Akhir = {0,0,0,0,0,0,0,0,0,0,0,0};
@@ -47,7 +47,7 @@ public class BahanMakanan : MonoBehaviour
     void count(){
         totalKoinUpgrade = 0;
         for(int i=0;i<12;i++){
-            hargaAkhir[i] = hargaawal[i] + hargaawal[i]*(level[i]-1);
+            hargaAkhir[i] = hargaawal[i] + hargaawal[i]*(level[i]);
             if(Rank[i]==1){
                 upgrade_Akhir[i] = upgrade_awal[i]*level[i];
             }
@@ -63,13 +63,14 @@ public class BahanMakanan : MonoBehaviour
 
 
     // BUAT AKTIFIN UPGRADE PERLU BUTTON , NTR BUTTONNYA DIISI X OKE OKE OKE, YG DIBWH INI NTR DI BUTTON NGEL
+    // trus d code baru ini nanti jg bakal jd tmpt isi sprite
     // public void upgrade1(){
     //     upgrade_levBahan(0);
     // }
     // public void upgrade1(){
     //     upgrade_levBahan(0);
     // }
-    private void upgrade_levBahan(int x){
+    public void upgrade_levBahan(int x){
         if(level[x]==50){
             player.sudahMaxUpgrade();
         }
