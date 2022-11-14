@@ -14,7 +14,7 @@ public class Toko : MonoBehaviour
     private int[] Rank = {1,1,1,1,1,1,1,1,1,1,1,1};
     [SerializeField] private float[] upgrade_awal;
     [SerializeField] private float[] upgrade_awal_y;
-    private float[] upgrade_Akhir = {0,0,0,0,0,0,0,0,0,0,0,0};
+    private float[] upgrade_Akhir = {0,1,0,0,0,0,0,0,0,0,0,0};
     private float[] upgrade_Akhir_y = {0,0};
     [SerializeField] private float[] hitunganx;
     [SerializeField] private float[] hitungany;
@@ -57,6 +57,7 @@ public class Toko : MonoBehaviour
         if(Rank[4] == 2){
             upgrade_awal[4] = 40;
         }
+        
     }
 
     // Update is called once per frame
@@ -83,6 +84,8 @@ public class Toko : MonoBehaviour
     }
 
     public int getDataInt(int x){ //Semua kecuali 6 & 7, miniboss di 5 & 6 & 7
+        // Debug.Log("Outletnya" + (int)upgrade_Akhir[1]);
+        // Debug.Log("Outletnya" + upgrade_Akhir[1]);
         return (int)upgrade_Akhir[x];
     }
 

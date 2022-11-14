@@ -113,7 +113,11 @@ public class GhostIdentity : MonoBehaviour
 
         int total = totalHarga + Kompor/100*totalHarga + wajanK/100*totalHarga; //Ntr ditambahin bonus : Kompor, Wajan Kecil, 
         Players.changeKoin(total*totalHantuDatangAkhir);
-        Debug.Log(Players.getKoin());
+        Debug.Log("Koin Player :" +Players.getKoin());
+
+        // Debug.Log("1)" + totalKerakTelorAkhir);
+        // Debug.Log(totalHantuDatangAkhir);
+        // Debug.Log(total*totalHantuDatangAkhir);
     }
 
     void count(){
@@ -125,7 +129,7 @@ public class GhostIdentity : MonoBehaviour
         // efek miniboss
         
         
-        
+        // Debug.Log("outlet " + Outlet);
         
         //TotalKerakTelor
         int totalKerakTelor1 = (totalKerakTelorawal*levelUpgrade);
