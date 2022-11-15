@@ -31,6 +31,12 @@ public class LineTracing : MonoBehaviour
         Debug.Log(lines.PointInLines(touchWorldSpace));
     }
 
+    public void HandleTouchBegin(Vector2 position) 
+    {
+        Vector2 touchWorldSpace = cam.ScreenToWorldPoint(position); 
+        Debug.Log(lines.PointInLines(touchWorldSpace));
+    }
+
     public void HandleTouchMoved(Touch touch) {
         
     }

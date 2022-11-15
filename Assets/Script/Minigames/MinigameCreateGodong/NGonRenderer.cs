@@ -28,6 +28,8 @@ public class NGonRenderer : MonoBehaviour
     public int dontDrawCount;
 
     public float lineWidth;
+
+    public float lineRotation;
     
     Material lineMaterial;
 
@@ -154,6 +156,7 @@ public class NGonRenderer : MonoBehaviour
             }
 
             Quad quad = quads[i];
+            quad = rotateQuad(quad, lineRotation);
 
             drawMainQuad(quad);
 
@@ -172,6 +175,8 @@ public class NGonRenderer : MonoBehaviour
             {
                 quadSecond = quads[i-1];
             }
+
+            quadSecond = rotateQuad(quadSecond, lineRotation);
             drawGapQuad(quadSecond, quad);
 
         }
@@ -214,8 +219,9 @@ public class NGonRenderer : MonoBehaviour
             }
 
             Quad quad = quads[i];
-            quad = rotateQuad(quad);
+            quad = rotateQuad(quad, lineRotation);
             quad = quadPositionToWorld(quad);
+            Debug.Log(i + " " +  quad + " " + point);
 
             /**
              * we will check if point is inside rectangle by first
@@ -275,14 +281,9 @@ public class NGonRenderer : MonoBehaviour
         return Mathf.Sqrt(diffX*diffX + diffY*diffY);
     }
     
-    Quad rotateQuad(Quad quad) 
+    Quad rotateQuad(Quad quad, float rotation) 
     {
         Quad result = new Quad();
-
-        /**
-         * I have no idea why I need to add 180 to it
-         */
-        float rotation = transform.rotation.eulerAngles.z + 180;
 
         result.bottomLeft = rotatePoint(quad.bottomLeft, rotation);
         result.bottomRight = rotatePoint(quad.bottomRight, rotation);

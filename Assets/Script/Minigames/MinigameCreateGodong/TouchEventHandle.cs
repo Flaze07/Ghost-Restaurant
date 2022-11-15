@@ -23,6 +23,9 @@ public class TouchEventHandle : MonoBehaviour
                 lineTracing.HandleTouchBegin(touch);
             }
         }
+        if(Input.GetMouseButtonDown(0)) {
+            lineTracing.HandleTouchBegin(Input.mousePosition);
+        }
     }
 }
 
