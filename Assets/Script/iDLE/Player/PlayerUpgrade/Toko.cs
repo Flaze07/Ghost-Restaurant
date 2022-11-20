@@ -37,6 +37,10 @@ public class Toko : MonoBehaviour
     GhostIdentity G7;
 
     private bool adaUpdateToko;
+
+
+    public GameObject miniboss;
+    MiniBoss mb;
     
     
     private void Awake() {
@@ -48,6 +52,8 @@ public class Toko : MonoBehaviour
         G5 = Ghost5.GetComponent<GhostIdentity>();
         G6 = Ghost6.GetComponent<GhostIdentity>();
         G7 = Ghost7.GetComponent<GhostIdentity>();
+
+        mb = miniboss.GetComponent<MiniBoss>();
     }
     // Start is called before the first frame update
     void Start()
@@ -68,7 +74,7 @@ public class Toko : MonoBehaviour
             counts();
             giveUpdateNotif();
         }
-        
+        // Debug.Log(upgrade_Akhir_y[0]);
     }
 
     void giveUpdateNotif(){
@@ -81,6 +87,8 @@ public class Toko : MonoBehaviour
         G5.adaUpgradetoko = true;
         G6.adaUpgradetoko = true;
         G7.adaUpgradetoko = true;
+
+        mb.adaupToko(true);
     }
 
     public int getDataInt(int x){ //Semua kecuali 6 & 7, miniboss di 5 & 6 & 7
@@ -96,6 +104,52 @@ public class Toko : MonoBehaviour
     public int getDataMiniGame(int x){ // 0 & 1 sadja urusan minigame
         return (int)upgrade_Akhir_y[x];
     }
+
+
+
+    public float getDATATOKOX(int x){ //HANYA BUAT BUTTON AJA OKE
+        return upgrade_Akhir[x];
+    }
+    public float getDATATOKOY(int x){ //HANYA BUAT BUTTON AJA OKE
+    //    Debug.Log("A "+level[x+5]+ " " + upgrade_awal_y[x] + " " +upgrade_Akhir_y[x]);
+        return upgrade_Akhir_y[x];
+    }
+    public float getDATATOKOX_AWAL(int x){ //HANYA BUAT BUTTON AJA OKE
+        return upgrade_awal[x];
+    }
+    public float getDATATOKOY_AWAL(int x){ //HANYA BUAT BUTTON AJA OKE
+        return upgrade_awal_y[x];
+    }
+    public float gethitunganxToko(int x){ //HANYA BUAT BUTTON AJA OKE
+        return hitunganx[x];
+    }
+    public float gethitunganyToko(int x){ //HANYA BUAT BUTTON AJA OKE
+        return hitungany[x];
+    }
+
+    public int getLevelToko(int x){
+        if((x == 0 || (x>=5 && x<=7)) && Rank[x] == 2) {
+            return level[x] - 25;
+        }
+        else if((x>=1 && x<=4) && Rank[x] == 2){
+            return level[x] - 20;
+        }
+        else{
+            return level[x];
+        }
+        
+    }
+    public int getRankToko(int x){
+        return Rank[x];
+    }
+    public int getHarga(int x){
+        return hargaAkhir[x];
+    }
+    public string getNameToko(int x){
+        return nama[x];
+    }
+
+
     
 
     public void upgradeToko(int x){
@@ -163,10 +217,10 @@ public class Toko : MonoBehaviour
                         upgrade_Akhir[i] = upgrade_awal[i] + (3*(level[i]/5)) + hitunganx[i];
                     }
                     else if(i == 4){
-                        upgrade_Akhir[i] = upgrade_awal[i] + (2*(level[i]-1));//jgn lupa ganti up awal kalo rank 2
+                        upgrade_Akhir[i] = upgrade_awal[i] + (2*(level[i]-20-1));//jgn lupa ganti up awal kalo rank 2
                     }
                     else if(i == 5){
-                        upgrade_Akhir[i] = 10 + upgrade_awal[i]*(level[i]-1) + hitunganx[i];
+                        upgrade_Akhir[i] = 10 + upgrade_awal[i]*(level[i]) + hitunganx[i];
                     }
                     
                 }
@@ -181,12 +235,15 @@ public class Toko : MonoBehaviour
             }
         }
         for(int i=0;i<2;i++){
-            if(Rank[i+5]==1){
-                upgrade_Akhir_y[i] = upgrade_awal_y[i] + 2*level[i+5]/10;
+            if(level[i]>0){
+                if(Rank[i+5]==1){
+                    upgrade_Akhir_y[i] = upgrade_awal_y[i] + 2*(level[i+5]/10);
+                }
+                else{
+                    upgrade_Akhir_y[i] = upgrade_awal_y[i] + 2*(level[i+5]/10) + hitungany[i];
+                }
             }
-            else{
-                upgrade_Akhir_y[i] = upgrade_awal_y[i] + 2*level[i+5]/10 + hitungany[i];
-            }
+            
 
         }
     }

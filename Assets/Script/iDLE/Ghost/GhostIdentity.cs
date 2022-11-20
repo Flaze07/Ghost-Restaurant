@@ -9,6 +9,7 @@ public class GhostIdentity : MonoBehaviour
     //Di sini semua hitungan (dr upgrade upgrade) bakal ada di sini sebelum ntr dimasukkin ke behavio (jalan + total makanan yg dibeli)
     [SerializeField] private  string nama;
     [SerializeField] private  int levelUpgrade;
+    //Gausa rank jgn lupa~~
     [SerializeField] private  int totalKerakTelorawal;
     [SerializeField] private  float waktuDatangawal;
     [SerializeField] private  float hitunganwaktuDatang; //INI CEK RUMUS DI EXCEL
@@ -23,6 +24,9 @@ public class GhostIdentity : MonoBehaviour
     public GameObject player;
     Player Players;
     Toko tokoupgrade;
+
+    public GameObject miniboss;
+    MiniBoss mb;
     
 
     //Variable buat hitungan
@@ -34,6 +38,7 @@ public class GhostIdentity : MonoBehaviour
 
     bool adaUpgrade;//notif dr code lain jg
     public bool adaUpgradetoko;//Ini biar ngitung di sini aja ga di ghostbehavio
+    bool minidatang;
 
     GhostBehavio GhostB;
 
@@ -45,6 +50,7 @@ public class GhostIdentity : MonoBehaviour
         GhostB = GetComponentInParent<GhostBehavio>();
         Players = player.GetComponent<Player>();
         tokoupgrade = player.GetComponent<Toko>();
+        mb = miniboss.GetComponent<MiniBoss>();
     }
 
     // Start is called before the first frame update
@@ -54,6 +60,7 @@ public class GhostIdentity : MonoBehaviour
         count();
         adaUpgrade = false;
         adaUpgradetoko = false;
+        minidatang = false;
     }
 
     // Update is called once per frame
@@ -68,10 +75,26 @@ public class GhostIdentity : MonoBehaviour
             count();
             adaUpgradetoko = false;
         }
+        if(minidatang){
+            GhostB.adaUpgrade1 = true;
+            minidatang = false;
+        }
+
     }
 
+    public void dtg(){
+        Debug.Log("Samapai");
+        minidatang = true;
+    }
+
+    public string getnamaghost(){
+        return nama;
+    }
     public int getKerakTelor(){
         return totalKerakTelorAkhir;
+    }
+    public int getKerakTelorAwal(){
+        return totalKerakTelorawal;
     }
     public int getTotalHantu(){
         return totalHantuDatangAkhir;
@@ -79,8 +102,23 @@ public class GhostIdentity : MonoBehaviour
     public float getWaktuDatang(){
         return waktuDatangAkhir;
     }
+    public float getWaktuDatangAwal(){
+        return waktuDatangawal;
+    }
+
+    public float gethitunganyGhost(){
+        return hitunganwaktuDatang;
+    }
+
     public int getLevel(){
         return levelUpgrade;
+    }
+  
+    public int getHargaKoin(){
+        return hargaKoinUpgradeAkhir;
+    }
+    public int getHargaFP(){
+        return hargaFPUpgradeAkhir;
     }
 
 
@@ -120,14 +158,17 @@ public class GhostIdentity : MonoBehaviour
         // Debug.Log(total*totalHantuDatangAkhir);
     }
 
-    void count(){
+    public void count(){
+
+        Debug.Log("HITUNG");
         // Data toko
         int TerompetData = tokoupgrade.getDataInt(0);//ditambah
         int Outlet = tokoupgrade.getDataInt(1);//dikali ke total awal
         int papan = tokoupgrade.getDataInt(4);//persenan dr total awal
 
         // efek miniboss
-        
+        float miniBosskurang = mb.getnegatifkurang();
+        int miniBosslambat = mb.getnegatiflambat();
         
         // Debug.Log("outlet " + Outlet);
         
@@ -141,10 +182,21 @@ public class GhostIdentity : MonoBehaviour
             int tambahan = tokoupgrade.getDataInt(ghost);
             totalKerakTelor1 += tambahan;
         }
-        totalKerakTelorAkhir = totalKerakTelor1*Outlet + totalKerakTelor1*papan/100;
+        int totalKerakTelor2 = totalKerakTelor1*Outlet + totalKerakTelor1*papan/100;
+        if(totalKerakTelor2 == 1){
+            totalKerakTelorAkhir = totalKerakTelor2;
+        }
+        else{
+            float totalKerakTelor3 = (float)totalKerakTelor2 - (float)totalKerakTelor2*miniBosskurang/100;
+            totalKerakTelorAkhir = (int)totalKerakTelor3;
+        }
 
         //WaktuDatang
-        waktuDatangAkhir = waktuDatangawal - (hitunganwaktuDatang*(levelUpgrade-1));//negatif miniboss jgn lupa dimasukkin ~ stlh ditotalin
+        float waktuDatangAkhir1 = waktuDatangawal - (hitunganwaktuDatang*(levelUpgrade-1));//negatif miniboss jgn lupa dimasukkin ~ stlh ditotalin
+        waktuDatangAkhir = waktuDatangAkhir1 + waktuDatangAkhir1*(float)miniBosslambat/100;
+
+        Debug.Log(waktuDatangAkhir);
+
 
         //totalHantu
         totalHantuDatangAkhir = totalHantuDatangawal + TerompetData;//Cek Upg Toko 1. Terompet Tanduk

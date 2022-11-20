@@ -43,12 +43,12 @@ public class GhostBehavio : MonoBehaviour
             if(adaUpgrade1 && (transform.position == pos1.position ||transform.position == pos2.position)) {
                 hitung(); // kalo ada upgrade hrs hitung ulang dl tp kalo si target dh nyampe posisi
                 adaUpgrade1 = false;
-                // Debug.Log("1");
+                // Debug.Log(adaUpgrade1);
             }
             else if(transform.position == pos1.position ||transform.position == pos2.position){
                 numberRandom = Random.Range(1,3);
-                // Debug.Log("2");
-                // Debug.Log(numberRandom);
+                // Debug.Log("2gas");
+                // Debug.Log("1" + numberRandom);
                 if(numberRandom == 1){
                     transform.position = pos1.position;
                     kecepatan = jarak11/simpanWaktu1;
@@ -61,7 +61,7 @@ public class GhostBehavio : MonoBehaviour
                     tujuan = tengah2.position;
                     //INI NTR ROTASI JGN LUPA 
                 }
-                    
+                // Debug.Log(kecepatan + " " + simpanWaktu1 + jarak11 + jarak21);
                 
             }
             else if(transform.position == tengah1.position || transform.position == tengah2.position){
@@ -95,8 +95,12 @@ public class GhostBehavio : MonoBehaviour
 
     }
 
+    public Vector3 getTujuan(){
+        return tujuan;
+    }
     void move(){
         transform.position = Vector3.MoveTowards(transform.position, tujuan, kecepatan * Time.deltaTime);
+        // Debug.Log("Maju " + kecepatan +" "+ tujuan);
     }
 
 

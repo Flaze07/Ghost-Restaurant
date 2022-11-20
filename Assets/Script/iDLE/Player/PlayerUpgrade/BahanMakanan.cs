@@ -62,6 +62,34 @@ public class BahanMakanan : MonoBehaviour
     }
 
 
+    public int getUpgrade(int x){
+        return upgrade_Akhir[x];
+    }
+    public int getUpgradeawal(int x){
+        return upgrade_awal[x];
+    }
+    public int gethitunganx(int x){
+        return hitunganx[x];
+    }
+    public int getRankBM(int x){
+        return Rank[x];
+    }
+    public int getLevelBM(int x){
+        if(Rank[x]==1){
+            return level[x];
+        }
+        else{
+            return level[x]-25;
+        }
+    }
+    public int getHargaBM(int x){
+        return hargaAkhir[x];
+    }
+    public string getName(int x){
+        return nama[x];
+    }
+
+
     // BUAT AKTIFIN UPGRADE PERLU BUTTON , NTR BUTTONNYA DIISI X OKE OKE OKE, YG DIBWH INI NTR DI BUTTON NGEL
     // trus d code baru ini nanti jg bakal jd tmpt isi sprite
     // public void upgrade1(){
@@ -88,6 +116,8 @@ public class BahanMakanan : MonoBehaviour
             }
         }
     }
+
+
 // aa
     // cek unlock ato tidak - eh tp gatau deh, keknya bs di unlock d canvas biar gabisa diteken..
     // private bool upgrade_cek(int x){
