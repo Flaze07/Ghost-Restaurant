@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class MiniBoss : MonoBehaviour
 {
     [SerializeField] private  float waktuDatangAwal;
@@ -58,6 +58,10 @@ public class MiniBoss : MonoBehaviour
         G7 = Ghost7.GetComponent<GhostIdentity>();
     }
 
+    [SerializeField]private TextMeshProUGUI miniT,lambatT,kurangT;
+
+    public GameObject gambar;
+
     // Start is called before the first frame update 
     void Start()
     {
@@ -71,11 +75,19 @@ public class MiniBoss : MonoBehaviour
 
         yesnoquestion.gameObject.SetActive(false);
         buttonghost.gameObject.SetActive(false);
+
+        miniT.text = waktuDatangAkhir.ToString();
+        lambatT.text = '+' + negatifLambatAkhir.ToString();
+        kurangT.text = '+' + negatifKurangAkhir.ToString();
+        gambar.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        miniT.text = waktuDatangAkhir.ToString();
+        lambatT.text = '+' + negatifLambatAkhir.ToString() + " %";
+        kurangT.text = '-' + negatifKurangAkhir.ToString() + " %";
         if(adaupgradeToko){
             adaupgradeToko = false;
             hitungboss();
@@ -90,7 +102,7 @@ public class MiniBoss : MonoBehaviour
         }
         else if(timer <= 0){
             move();
-            
+            gambar.gameObject.SetActive(true);
         }
 
         if(transform.position == pos2.position){
@@ -155,6 +167,7 @@ public class MiniBoss : MonoBehaviour
         // trus tutup gameobjectnya
         yesnoquestion.gameObject.SetActive(false);
         buttonghost.gameObject.SetActive(false);
+        gambar.gameObject.SetActive(false);
         transform.position = pos1.position;
         udasampe = false;
         sampai();

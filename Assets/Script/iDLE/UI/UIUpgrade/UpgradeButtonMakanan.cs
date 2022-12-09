@@ -17,7 +17,7 @@ public class UpgradeButtonMakanan : MonoBehaviour
     // Canvas TIMEEE
     [SerializeField]private GameObject ButtonText1,ButtonText2, Button, Max, RankUpButton;
     
-    [SerializeField]private TextMeshProUGUI RankNum, LevelNum, Harga, Nama;
+    [SerializeField]private TextMeshProUGUI RankNum, LevelNum, Harga;
 
 
 
@@ -52,7 +52,6 @@ public class UpgradeButtonMakanan : MonoBehaviour
         }
         count();
         string nama = bahanmakanan.getName(bahanmakananx);
-        Nama.text = nama;
         Nama1.text = nama;
         textchange();
         

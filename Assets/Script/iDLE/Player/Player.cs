@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private string nama;
+    [SerializeField] private string tempat;
     private int koinDarah = 0;
     private int famePoint = 0;
     private int hargaKerakTelorAwal = 1;
     private int hargaKerakTelorAkhir;
 
-    // Cek tempat di mana(?)
+    [SerializeField]private TextMeshProUGUI NilaiHarga, NilaiKoin, NilaiFP;
+    [SerializeField]private TextMeshProUGUI Nama, hargaT, koinT, FPT;
+
+    [SerializeField]private GameObject pegangan1,pegangan2,dropdown;
 
     
     // Start is called before the first frame update
     void Start()
     {
+        pegangan1.gameObject.SetActive(true);
+        pegangan2.gameObject.SetActive(false);
+        dropdown.gameObject.SetActive(false);
+
+        NilaiHarga.text = hargaKerakTelorAkhir.ToString();
+        NilaiKoin.text = koinDarah.ToString();
+        NilaiFP.text = famePoint.ToString();
+        Nama.text = nama.ToString();
+        hargaT.text = hargaKerakTelorAkhir.ToString();
+        koinT.text = koinDarah.ToString();
+        FPT.text = famePoint.ToString();
         
     }
 
@@ -24,6 +40,26 @@ public class Player : MonoBehaviour
     {
         // Debug.Log("Hargakeraktelor " + hargaKerakTelorAkhir);
         // Debug.Log(koinDarah);
+        NilaiHarga.text = hargaKerakTelorAkhir.ToString();
+        NilaiKoin.text = koinDarah.ToString();
+        NilaiFP.text = famePoint.ToString();
+        Nama.text = nama.ToString();
+        hargaT.text = hargaKerakTelorAkhir.ToString();
+        koinT.text = koinDarah.ToString();
+        FPT.text = famePoint.ToString();
+    }
+
+    public void dropdownn(){
+        Debug.Log("Clicked!!");
+        pegangan1.gameObject.SetActive(false);
+        dropdown.gameObject.SetActive(true);
+        pegangan2.gameObject.SetActive(true);
+    }
+
+    public void tarikatas(){
+        pegangan1.gameObject.SetActive(true);
+        dropdown.gameObject.SetActive(false);
+        pegangan2.gameObject.SetActive(false);
     }
 
 

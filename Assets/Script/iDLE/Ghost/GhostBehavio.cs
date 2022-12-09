@@ -30,6 +30,7 @@ public class GhostBehavio : MonoBehaviour
         hitung();
         tujuan = pos1.position;
         adaUpgrade1 = false;
+        numberRandom = 1;
         // kecepatan = 0;
     }
 
@@ -46,6 +47,9 @@ public class GhostBehavio : MonoBehaviour
                 // Debug.Log(adaUpgrade1);
             }
             else if(transform.position == pos1.position ||transform.position == pos2.position){
+                if(numberRandom == 2){
+                    transform.Rotate(0, 180, 0);
+                }
                 numberRandom = Random.Range(1,3);
                 // Debug.Log("2gas");
                 // Debug.Log("1" + numberRandom);
@@ -53,12 +57,15 @@ public class GhostBehavio : MonoBehaviour
                     transform.position = pos1.position;
                     kecepatan = jarak11/simpanWaktu1;
                     tujuan = tengah1.position;
+                    
+                    
                     //INI NTR ROTASI JGN LUPA 
                 }
                 else{
                     transform.position = pos2.position;
                     kecepatan = jarak21/simpanWaktu1;
                     tujuan = tengah2.position;
+                    transform.Rotate(0, 180, 0);
                     //INI NTR ROTASI JGN LUPA 
                 }
                 // Debug.Log(kecepatan + " " + simpanWaktu1 + jarak11 + jarak21);

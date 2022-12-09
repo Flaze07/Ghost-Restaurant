@@ -16,7 +16,7 @@ public class UpgradeButtonGhost : MonoBehaviour
     // Canvas TIMEEE
     [SerializeField]private GameObject ButtonText1,ButtonText2, Button, Max;
     
-    [SerializeField]private TextMeshProUGUI LevelNum, Harga, FP, Nama;
+    [SerializeField]private TextMeshProUGUI LevelNum, Harga, FP;
 
 
 
@@ -43,23 +43,24 @@ public class UpgradeButtonGhost : MonoBehaviour
         if(lvl == 0){
             ButtonText1.gameObject.SetActive(true);
             ButtonText2.gameObject.SetActive(false);
+  
         }
         else{
             ButtonText2.gameObject.SetActive(true);
             ButtonText1.gameObject.SetActive(false);
+    
         }
         count();
         string nama = ghostid.getnamaghost();
-        Nama.text = nama;
         Nama1.text = nama;
         textchange();
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
         if(lvl == 20){
             Button.gameObject.SetActive(false);
             Max.gameObject.SetActive(true);
