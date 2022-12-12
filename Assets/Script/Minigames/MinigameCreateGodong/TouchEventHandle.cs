@@ -20,7 +20,9 @@ public class TouchEventHandle : MonoBehaviour
             Touch touch = Input.GetTouch(0);
 
             if(touch.phase == TouchPhase.Began) {
-                lineTracing.HandleTouchBegin(touch);
+                lineTracing.HandleTouchBegin(touch.position);
+            } else if(touch.phase == TouchPhase.Moved) {
+                lineTracing.HandleTouchMoved(touch.position);
             }
         }
         if(Input.GetMouseButtonDown(0)) {

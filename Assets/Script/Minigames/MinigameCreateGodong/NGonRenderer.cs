@@ -221,7 +221,6 @@ public class NGonRenderer : MonoBehaviour
             Quad quad = quads[i];
             quad = rotateQuad(quad, lineRotation);
             quad = quadPositionToWorld(quad);
-            Debug.Log(i + " " +  quad + " " + point);
 
             /**
              * we will check if point is inside rectangle by first
@@ -302,6 +301,10 @@ public class NGonRenderer : MonoBehaviour
             cosRes * point.x - sinRes * point.y,
             sinRes * point.x + cosRes * point.y
         );
+    }
+
+    public bool IsLast(int lineNumber) {
+        return lineNumber == pointCount - dontDrawCount - 1;
     }
 }
 
