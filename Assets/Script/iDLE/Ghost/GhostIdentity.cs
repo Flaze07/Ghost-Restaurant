@@ -42,15 +42,21 @@ public class GhostIdentity : MonoBehaviour
 
     GhostBehavio GhostB;
 
+    private int totalhntuboost;
 
     // buat tau ini ghost yg mana (8,9,10,11 --> ini buat ghost yg ada efek d toko, sisanya 0)
     [SerializeField] private int ghost;
+
+    //slider boos
+    public GameObject buttonspam;
+    ButtonCloneGhost buttonspaam;
 
     void Awake() { //THIS IS ONLY UTK KASIHTAU KE YG LAIN ADA UPGRADE GA AAPLAGI BUAT YG GA ADA HUBUNGANNYA AMA SHOP
         GhostB = GetComponentInParent<GhostBehavio>();
         Players = player.GetComponent<Player>();
         tokoupgrade = player.GetComponent<Toko>();
         mb = miniboss.GetComponent<MiniBoss>();
+        buttonspaam = buttonspam.GetComponent<ButtonCloneGhost>();
     }
 
     // Start is called before the first frame update
@@ -61,6 +67,7 @@ public class GhostIdentity : MonoBehaviour
         adaUpgrade = false;
         adaUpgradetoko = false;
         minidatang = false;
+        totalhntuboost = 0;
     }
 
     // Update is called once per frame
@@ -88,6 +95,9 @@ public class GhostIdentity : MonoBehaviour
 
     }
 
+    public void changetotalhntuboost(int ttl){
+        totalhntuboost = ttl;
+    }
     public void dtg(){
         Debug.Log("Samapai");
         minidatang = true;
@@ -105,6 +115,7 @@ public class GhostIdentity : MonoBehaviour
     public int getTotalHantu(){
         return totalHantuDatangAkhir;
     }
+    
     public float getWaktuDatang(){
         return waktuDatangAkhir;
     }
@@ -155,8 +166,13 @@ public class GhostIdentity : MonoBehaviour
         int Kompor = tokoupgrade.getDataInt(2);//persenan dr total awal
         int wajanK = tokoupgrade.getDataInt(3);// sama
 
-        int total = totalHarga + Kompor/100*totalHarga + wajanK/100*totalHarga; //Ntr ditambahin bonus : Kompor, Wajan Kecil, 
-        Players.changeKoin(total*totalHantuDatangAkhir);
+        //bonus dr clicking
+        int boost = buttonspaam.getBoost();
+
+        int total = (totalHarga + Kompor/100*totalHarga + wajanK/100*totalHarga)*boost; //Ntr ditambahin bonus : Kompor, Wajan Kecil, 
+        
+        int ttlhantu = totalHantuDatangAkhir + totalhntuboost;
+        Players.changeKoin(total*ttlhantu);
         Debug.Log("Koin Player :" +Players.getKoin());
 
         // Debug.Log("1)" + totalKerakTelorAkhir);
