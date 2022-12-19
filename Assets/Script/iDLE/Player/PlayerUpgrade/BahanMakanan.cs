@@ -113,6 +113,11 @@ public class BahanMakanan : MonoBehaviour
         return nama[x];
     }
 
+    public int getBanyakBM()
+    {
+        return nama.Length;
+    }
+
     /**
      * mencari index dari sebuah nama
      */
