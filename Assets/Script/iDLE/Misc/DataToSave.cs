@@ -9,6 +9,9 @@ public class DataToSave
     public class RankData: Dictionary<string, int> {}
     public class LevelData: Dictionary<string, int> {}
 
-    public RankData rankData = new RankData();
-    public LevelData levelData = new LevelData();
+    /**
+     * data simpanan buat bahan makanan
+     */
+    public RankData bmRankData = new RankData();
+    public LevelData bmLevelData = new LevelData();
 }
