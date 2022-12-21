@@ -509,6 +509,8 @@ MonoBehaviour:
   RankNum2: {fileID: 0}
   LevelNum2: {fileID: 0}
   x2: {fileID: 0}
+  imageI1: {fileID: 0}
+  imageI2: {fileID: 0}
 --- !u!1 &3360668825263634496
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,7 +713,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68b8316722ad68149ac3ed7dff5acd91, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 870392369d55bea42874c139e50a4f0d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

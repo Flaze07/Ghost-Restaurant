@@ -31,7 +31,7 @@ public class BahanMakanan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setName();
+        
         count();
         adaUpdateBahan = false;
     }
@@ -39,22 +39,25 @@ public class BahanMakanan : MonoBehaviour
     /**
      * menginitialize variable name dengan nama yang benar
      */
-    void setName()
-    {
-        nama = new string[12];
-        nama[0] = "Telur Ayam";
-        nama[1] = "Ebi";
-        nama[2] = "Kelapa Parut";
-        nama[3] = "Beras Ketan Putih";
-        nama[4] = "Gula, Garam, & Merica";
-        nama[5] = "Bawang Goreng";
-        nama[6] = "Jahe";
-        nama[7] = "Kencur";
-        nama[8] = "Telur Bebek";
-        nama[9] = "Cabai Merah";
-        nama[10] = "Abon";
-        nama[11] = "Mie";
-    }
+     
+    //btw maaf ini keknya gausa, soalnya kalo kita mo nambahin palembang mo diedit di unity lsg aja
+
+    // void setName()
+    // {
+    //     nama = new string[12];
+    //     nama[0] = "Telur Ayam";
+    //     nama[1] = "Ebi";
+    //     nama[2] = "Kelapa Parut";
+    //     nama[3] = "Beras Ketan Putih";
+    //     nama[4] = "Gula, Garam, & Merica";
+    //     nama[5] = "Bawang Goreng";
+    //     nama[6] = "Jahe";
+    //     nama[7] = "Kencur";
+    //     nama[8] = "Telur Bebek";
+    //     nama[9] = "Cabai Merah";
+    //     nama[10] = "Abon";
+    //     nama[11] = "Mie";
+    // }
 
     // Update is called once per frame
     void Update()

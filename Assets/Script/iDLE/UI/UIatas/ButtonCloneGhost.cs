@@ -98,7 +98,7 @@ public class ButtonCloneGhost : MonoBehaviour
             
         }
         if(totalclick == 200){
-            if(totalboosthantu < 10){
+            if(totalboosthantu < 5){
                 totalboosthantu = totalboosthantu + 1;
                 gi.changetotalhntuboost(totalboosthantu);
             }

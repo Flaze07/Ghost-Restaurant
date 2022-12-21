@@ -7,8 +7,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private string nama;
     [SerializeField] private string tempat;
+    [SerializeField]private bool udaBeliPalembang;
     private int koinDarah = 0;
-    private int famePoint = 0;
+    private int famePoint = 5;
     private int hargaKerakTelorAwal = 1;
     private int hargaKerakTelorAkhir;
 
@@ -25,6 +26,35 @@ public class Player : MonoBehaviour
         pegangan2.gameObject.SetActive(false);
         dropdown.gameObject.SetActive(false);
 
+        
+        
+        //ya ini ntr dibarengin ama kalo load save aja kali jd abis load save ditambah transfer
+        if(tempat == "Palembang"){
+            if(PlayerPrefs.HasKey("booltfPlg")){
+                if(PlayerPrefs.GetInt("booltfPlg") == 1){
+                    int x = PlayerPrefs.GetInt("totaltfPlg");
+                    koinDarah += x;
+                    Debug.Log("Ada Transfered!!");
+                    PlayerPrefs.SetInt("booltfPlg", 0);
+                    PlayerPrefs.SetInt("totaltfPlg", 0);
+                }
+            }
+        }
+        else{
+            if(PlayerPrefs.HasKey("booltfJkt")){
+                if(PlayerPrefs.GetInt("booltfJkt") == 1){
+                    int x = PlayerPrefs.GetInt("totaltfJkt");
+                    koinDarah += x;
+                    Debug.Log("Ada Transfered!!");
+                    PlayerPrefs.SetInt("booltfJkt", 0);
+                    PlayerPrefs.SetInt("totaltfJkt", 0);
+                }
+            }
+        }
+        
+
+
+
         NilaiHarga.text = hargaKerakTelorAkhir.ToString();
         NilaiKoin.text = koinDarah.ToString();
         NilaiFP.text = famePoint.ToString();
@@ -32,7 +62,6 @@ public class Player : MonoBehaviour
         hargaT.text = hargaKerakTelorAkhir.ToString();
         koinT.text = koinDarah.ToString();
         FPT.text = famePoint.ToString();
-        
     }
 
     // Update is called once per frame
@@ -50,7 +79,7 @@ public class Player : MonoBehaviour
     }
 
     public void dropdownn(){
-        Debug.Log("Clicked!!");
+        // Debug.Log("Clicked!!");
         pegangan1.gameObject.SetActive(false);
         dropdown.gameObject.SetActive(true);
         pegangan2.gameObject.SetActive(true);
@@ -69,7 +98,15 @@ public class Player : MonoBehaviour
     public void changeKoin(int koin){ //masukkin + - kalo mo pake
         koinDarah += koin;
     }
-    
+    public string gettempat(){
+        return tempat;
+    }
+    public bool getBeliPalembang(){
+        return udaBeliPalembang;
+    }
+    public void changePalembang(){
+        udaBeliPalembang = true;
+    }
 
 
 
