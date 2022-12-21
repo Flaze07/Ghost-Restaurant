@@ -31,8 +31,29 @@ public class BahanMakanan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setName();
         count();
         adaUpdateBahan = false;
+    }
+
+    /**
+     * menginitialize variable name dengan nama yang benar
+     */
+    void setName()
+    {
+        nama = new string[12];
+        nama[0] = "Telur Ayam";
+        nama[1] = "Ebi";
+        nama[2] = "Kelapa Parut";
+        nama[3] = "Beras Ketan Putih";
+        nama[4] = "Gula, Garam, & Merica";
+        nama[5] = "Bawang Goreng";
+        nama[6] = "Jahe";
+        nama[7] = "Kencur";
+        nama[8] = "Telur Bebek";
+        nama[9] = "Cabai Merah";
+        nama[10] = "Abon";
+        nama[11] = "Mie";
     }
 
     // Update is called once per frame
@@ -89,6 +110,41 @@ public class BahanMakanan : MonoBehaviour
         return nama[x];
     }
 
+    public int getBanyakBM()
+    {
+        return nama.Length;
+    }
+
+    /**
+     * mencari index dari sebuah nama
+     */
+    public int findName(string name)
+    {
+        int namaIdx = -1;
+        for(int i = 0; i < nama.Length; ++i)
+        {
+            if(nama[i] == name)
+            {
+                namaIdx = i;
+                break;
+            }
+        }
+
+        return namaIdx;
+    }
+
+    /**
+     * setter untuk menginitialize value dari saved data
+     */
+    public void setRank(int idx, int newRank)
+    {
+        Rank[idx] = newRank;
+    }
+
+    public void setLevel(int idx, int newLevel)
+    {
+        level[idx] = newLevel;
+    }
 
     // BUAT AKTIFIN UPGRADE PERLU BUTTON , NTR BUTTONNYA DIISI X OKE OKE OKE, YG DIBWH INI NTR DI BUTTON NGEL
     // trus d code baru ini nanti jg bakal jd tmpt isi sprite
@@ -118,22 +174,6 @@ public class BahanMakanan : MonoBehaviour
     }
 
 
-// aa
-    // cek unlock ato tidak - eh tp gatau deh, keknya bs di unlock d canvas biar gabisa diteken..
-    // private bool upgrade_cek(int x){
-    //     if(x == 8){
-    //         // cek level Ghostnya, kalo level msh 0, bool false, kalo ga ya true
-    //     }
-    //     if(x == 9){
-    //         // cek level Ghostnya, kalo level msh 0, bool false, kalo ga ya true
-    //     }
-    //     if(x == 10){
-    //         // cek level Ghostnya, kalo level msh 0, bool false, kalo ga ya true
-    //     }
-    //     if(x == 11){
-    //         // cek level Ghostnya, kalo level msh 0, bool false, kalo ga ya true
-    //     }
-    // }
 
 
 

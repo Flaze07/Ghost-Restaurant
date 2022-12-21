@@ -19,11 +19,12 @@ public class UpgradeButtonMakanan : MonoBehaviour
     
     [SerializeField]private TextMeshProUGUI RankNum, LevelNum, Harga;
 
-
+    [SerializeField]private GameObject image1,image2;
 
     // buat si info
     [SerializeField]private GameObject InfoCanvas, nextupgrade, Maxlevel, upgradeObject, rankupObject;
     [SerializeField]private TextMeshProUGUI Nama1, RankNum1, LevelNum1, x1, RankNum2, LevelNum2, x2;
+    [SerializeField]private GameObject imageI1,imageI2;
     private void Awake() {
         bahanmakanan = player.GetComponent<BahanMakanan>();
     }
@@ -34,13 +35,21 @@ public class UpgradeButtonMakanan : MonoBehaviour
         Max.gameObject.SetActive(false);
         RankUpButton.gameObject.SetActive(false);
         rankupObject.gameObject.SetActive(false);
+        
 
         adaupBM = false;
 
         ambildata();
         upgradeawal = bahanmakanan.getUpgradeawal(bahanmakananx);
         hitunganx = bahanmakanan.gethitunganx(bahanmakananx);
-
+        if(rank == 1){
+            image1.gameObject.SetActive(true);
+            image2.gameObject.SetActive(false);
+        }
+        else{
+            image1.gameObject.SetActive(false);
+            image2.gameObject.SetActive(true);
+        }
 
         if(lvl == 0){
             ButtonText1.gameObject.SetActive(true);
@@ -60,7 +69,10 @@ public class UpgradeButtonMakanan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(rank == 2){
+            image1.gameObject.SetActive(false);
+            image2.gameObject.SetActive(true);
+        }
         if(rank == 2 && lvl == 25){
             Button.gameObject.SetActive(false);
             Max.gameObject.SetActive(true);
@@ -135,6 +147,14 @@ public class UpgradeButtonMakanan : MonoBehaviour
 
     public void infoButtonMakanan0(){
         InfoCanvas.gameObject.SetActive(true);
+        // if(rank == 1){
+        //     imageI1.gameObject.SetActive(true);
+        //     imageI2.gameObject.SetActive(false);
+        // }
+        // if(rank == 2){
+        //     imageI1.gameObject.SetActive(false);
+        //     imageI2.gameObject.SetActive(true);
+        // }
     }
     public void backMakanan0(){
         InfoCanvas.gameObject.SetActive(false);

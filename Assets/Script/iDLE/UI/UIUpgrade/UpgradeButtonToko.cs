@@ -21,11 +21,12 @@ public class UpgradeButtonToko : MonoBehaviour
     
     [SerializeField]private TextMeshProUGUI RankNum, LevelNum, Harga;
 
-
+    [SerializeField]private GameObject image1,image2;
 
     // buat si info
     [SerializeField]private GameObject InfoCanvas, nextupgrade, Maxlevel, upgradeObject, rankupObject;
     [SerializeField]private TextMeshProUGUI Nama1, RankNum1, LevelNum1, x1, RankNum2, LevelNum2, x2;
+    [SerializeField]private GameObject imageI1,imageI2;
     private void Awake() {
         toko = player.GetComponent<Toko>();
         but = GetComponentInParent<UpgradeButtonTokoY>();
@@ -43,6 +44,15 @@ public class UpgradeButtonToko : MonoBehaviour
         ambildata();
         upgradeawalx = toko.getDATATOKOX_AWAL(tokox);
         hitunganx = toko.gethitunganxToko(tokox);
+
+        if(rank == 1){
+            image1.gameObject.SetActive(true);
+            image2.gameObject.SetActive(false);
+        }
+        else{
+            image1.gameObject.SetActive(false);
+            image2.gameObject.SetActive(true);
+        }
 
 
         if(lvl == 0){
@@ -64,7 +74,10 @@ public class UpgradeButtonToko : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(rank == 2){
+            image1.gameObject.SetActive(false);
+            image2.gameObject.SetActive(true);
+        }
         if((tokox == 0 && rank == 2 && lvl == 5) || ((tokox>=1 && tokox<=4) && rank == 2 && lvl == 20) || ((tokox>=5 && tokox<=7) && rank == 2 && lvl == 25) || ((tokox>=8 && tokox<=11) && rank == 1 && lvl == 20)){
             Button.gameObject.SetActive(false);
             Max.gameObject.SetActive(true);
@@ -189,6 +202,14 @@ public class UpgradeButtonToko : MonoBehaviour
 
     public void infoButtonMakanan0(){
         InfoCanvas.gameObject.SetActive(true);
+        // if(rank == 1){
+        //     imageI1.gameObject.SetActive(true);
+        //     imageI2.gameObject.SetActive(false);
+        // }
+        // if(rank == 2){
+        //     imageI1.gameObject.SetActive(false);
+        //     imageI2.gameObject.SetActive(true);
+        // }
     }
     public void backMakanan0(){
         InfoCanvas.gameObject.SetActive(false);
