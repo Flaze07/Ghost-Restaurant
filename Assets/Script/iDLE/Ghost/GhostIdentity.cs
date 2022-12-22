@@ -17,6 +17,7 @@ public class GhostIdentity : MonoBehaviour
     // Harga Upgrade
     [SerializeField] private int hargaKoinUpgradeawal;
     [SerializeField] private int hargaFPUpgradeawal;
+    [SerializeField] private int hitunganhargaKoinUpgrade;
 
     private int totalHantuDatangawal = 1;
 
@@ -222,8 +223,9 @@ public class GhostIdentity : MonoBehaviour
 
         //totalHantu
         totalHantuDatangAkhir = totalHantuDatangawal + TerompetData;//Cek Upg Toko 1. Terompet Tanduk
-        hargaKoinUpgradeAkhir = hargaKoinUpgradeawal*levelUpgrade;//Masih blm dpt rumus pasnya...
-        hargaFPUpgradeAkhir = hargaFPUpgradeawal*levelUpgrade;//Masih blm dpt rumus pasnya...
+        hargaKoinUpgradeAkhir = hargaKoinUpgradeawal + hitunganhargaKoinUpgrade*levelUpgrade;
+        
+        hargaFPUpgradeAkhir = hargaFPUpgradeawal*(levelUpgrade+1);
         
     }
 

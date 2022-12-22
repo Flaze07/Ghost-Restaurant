@@ -10,6 +10,7 @@ public class Toko : MonoBehaviour
 
     // uh.. ya
     private int[] hargaAkhir = {0,0,0,0,0,0,0,0,0,0,0,0};
+    [SerializeField]private int[] hitunganharga;
     private int[] level = {0,0,0,0,0,0,0,0,0,0,0,0};
     private int[] Rank = {1,1,1,1,1,1,1,1,1,1,1,1};
     [SerializeField] private float[] upgrade_awal;
@@ -178,11 +179,17 @@ public class Toko : MonoBehaviour
 
     void counts(){
         for(int i=0;i<12;i++){
-            hargaAkhir[i] = hargaawal[i] + hargaawal[i]*(level[i]);
+            if(i>= 5 && i <=7){
+                hargaAkhir[i] = hargaawal[i] + hitunganharga[i]*(level[i]);
+            }
+            else{
+                hargaAkhir[i] += hitunganharga[i]*(level[i]);
+            }
             if(level[i]>0){
                 if(Rank[i]==1){
                     if(i == 0||i>=6){
                         upgrade_Akhir[i] = upgrade_awal[i]*level[i];
+                        
                     }
                     else if(i==1){
                         upgrade_Akhir[i] = upgrade_awal[i]+(level[i]/5);
@@ -201,6 +208,9 @@ public class Toko : MonoBehaviour
                         upgrade_Akhir[i] = 10 + upgrade_awal[i]*(level[i]-1);
                     }
                     
+                   
+                   
+
                 }
                 else{
                     if(i == 0||i>=6){
@@ -223,6 +233,7 @@ public class Toko : MonoBehaviour
                         upgrade_Akhir[i] = 10 + upgrade_awal[i]*(level[i]) + hitunganx[i];
                     }
                     
+                    
                 }
             }
             else{
@@ -232,7 +243,11 @@ public class Toko : MonoBehaviour
                 else{
                     upgrade_Akhir[i] = 0;
                 }
+                if(i>=0 && i <=4){
+                    hargaAkhir[i] = hargaawal[i];
+                }
             }
+            
         }
         for(int i=0;i<2;i++){
             if(level[i]>0){

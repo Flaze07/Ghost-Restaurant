@@ -85,8 +85,24 @@ public class UpgradeButtonGhost : MonoBehaviour
         LevelNum.text = lvl.ToString();
         LevelNum1.text = lvl.ToString();
         LevelNum2.text = lvlhitungan.ToString();
+        
+        float hrg;
+        if(harga >= 1000000000){
+            hrg = (float)harga/1000000000;
+            Harga.text = hrg.ToString("F2") + " Ml";
+        }
+        else if(harga >= 1000000){
+            hrg = (float)harga/1000000;
+            Harga.text = hrg.ToString("F2") + " Jt";
+        }
+        else if(harga >= 100000){
+            hrg = harga/1000;
+            Harga.text = hrg.ToString() + " Rb";
+        }
+        else{
+            Harga.text = harga.ToString();
+        }
 
-        Harga.text = harga.ToString();
         FP.text = famepoin.ToString();
 
         x1.text = upgradeakhirx.ToString();

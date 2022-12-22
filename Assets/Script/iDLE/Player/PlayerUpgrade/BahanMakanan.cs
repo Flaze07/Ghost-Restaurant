@@ -16,6 +16,7 @@ public class BahanMakanan : MonoBehaviour
     private int[] upgrade_Akhir = {0,0,0,0,0,0,0,0,0,0,0,0};
     [SerializeField] private int[] hitunganx;
     
+    [SerializeField] private int[] hitunganhargax;
     private int totalKoinUpgrade = 0;
 
     Player player;
@@ -71,12 +72,14 @@ public class BahanMakanan : MonoBehaviour
     void count(){
         totalKoinUpgrade = 0;
         for(int i=0;i<12;i++){
-            hargaAkhir[i] = hargaawal[i] + hargaawal[i]*(level[i]);
+            hargaAkhir[i] = hargaawal[i] + hitunganhargax[i]*(level[i]);
             if(Rank[i]==1){
                 upgrade_Akhir[i] = upgrade_awal[i]*level[i];
+                
             }
             else{
                 upgrade_Akhir[i] = upgrade_awal[i]*level[i] + hitunganx[i];
+                
             }
         }
         for(int i=0;i<12;i++){

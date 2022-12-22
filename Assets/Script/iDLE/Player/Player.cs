@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private string nama;
     [SerializeField] private string tempat;
     [SerializeField]private bool udaBeliPalembang;
-    private int koinDarah = 0;
-    private int famePoint = 5;
+    private int koinDarah = 10000;
+    private int famePoint = 0;
     private int hargaKerakTelorAwal = 1;
     private int hargaKerakTelorAkhir;
 
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField]private TextMeshProUGUI Nama, hargaT, koinT, FPT;
 
     [SerializeField]private GameObject pegangan1,pegangan2,dropdown;
+    [SerializeField]private GameObject playernotenough;
 
     
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         pegangan2.gameObject.SetActive(false);
         dropdown.gameObject.SetActive(false);
 
+        playernotenough.gameObject.SetActive(false);
         
         
         //ya ini ntr dibarengin ama kalo load save aja kali jd abis load save ditambah transfer
@@ -55,13 +57,64 @@ public class Player : MonoBehaviour
 
 
 
-        NilaiHarga.text = hargaKerakTelorAkhir.ToString();
-        NilaiKoin.text = koinDarah.ToString();
-        NilaiFP.text = famePoint.ToString();
+        
+        counting();
         Nama.text = nama.ToString();
         hargaT.text = hargaKerakTelorAkhir.ToString();
         koinT.text = koinDarah.ToString();
         FPT.text = famePoint.ToString();
+    }
+
+    private void counting(){
+        float harga, koin, fp;
+        if(hargaKerakTelorAkhir >= 1000000000){
+            harga = (float)hargaKerakTelorAkhir/1000000000;
+            NilaiHarga.text = harga.ToString("F2") + " Ml";
+        }
+        else if(hargaKerakTelorAkhir >= 1000000){
+            harga = (float)hargaKerakTelorAkhir/1000000;
+            NilaiHarga.text = harga.ToString("F2") + " Jt";
+        }
+        else if(hargaKerakTelorAkhir >= 100000){
+            harga = hargaKerakTelorAkhir/1000;
+            NilaiHarga.text = harga.ToString() + " Rb";
+        }
+        else{
+            NilaiHarga.text = hargaKerakTelorAkhir.ToString();
+        }
+
+        if(koinDarah >= 1000000000){
+            koin = (float)koinDarah/1000000000;
+            NilaiKoin.text = koin.ToString("F2") + " Ml";
+        }
+        else if(koinDarah >= 1000000){
+            koin = (float)koinDarah/1000000;
+            NilaiKoin.text = koin.ToString("F2") + " Jt";
+        }
+        else if(koinDarah >= 100000){
+            koin = koinDarah/1000;
+            NilaiKoin.text = koin.ToString() + " Rb";
+        }
+        else{
+            NilaiKoin.text = koinDarah.ToString();
+        }
+
+        if(famePoint >= 1000000000){
+            fp = (float)famePoint/1000000000;
+            NilaiFP.text = fp.ToString("F2") + " Ml";
+        }
+        else if(famePoint >= 1000000){
+            fp = (float)famePoint/1000000;
+            NilaiFP.text = fp.ToString("F2") + " Jt";
+        }
+        else if(famePoint >= 100000){
+            fp = famePoint/1000;
+            NilaiFP.text = fp.ToString() + " Rb";
+        }
+        else{
+            NilaiFP.text = famePoint.ToString();
+        }
+
     }
 
     // Update is called once per frame
@@ -69,9 +122,7 @@ public class Player : MonoBehaviour
     {
         // Debug.Log("Hargakeraktelor " + hargaKerakTelorAkhir);
         // Debug.Log(koinDarah);
-        NilaiHarga.text = hargaKerakTelorAkhir.ToString();
-        NilaiKoin.text = koinDarah.ToString();
-        NilaiFP.text = famePoint.ToString();
+        counting();
         Nama.text = nama.ToString();
         hargaT.text = hargaKerakTelorAkhir.ToString();
         koinT.text = koinDarah.ToString();
@@ -119,7 +170,10 @@ public class Player : MonoBehaviour
 
     //Kalo player ga punya uang cukup utk upgrade
     public void notEnough(){
-        //Ntr ada Canvas d sini yg blg not enough begitu.
+        playernotenough.gameObject.SetActive(true);
+    }
+    public void okNotEnough(){
+        playernotenough.gameObject.SetActive(false);
     }
     public void sudahMaxUpgrade(){
         //Ntr ada Canvas d sini yg blg not enough begitu.
