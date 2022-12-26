@@ -85,7 +85,7 @@ public class MiniBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        miniT.text = waktuDatangAkhir.ToString();
+        miniT.text = waktuDatangAkhir.ToString() + " s";
         lambatT.text = '+' + negatifLambatAkhir.ToString() + " %";
         kurangT.text = '-' + negatifKurangAkhir.ToString() + " %";
         if(adaupgradeToko){

@@ -19054,7 +19054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff35c158ffc696941b65e96cee08bfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waktuDatangAwal: 20
+  waktuDatangAwal: 3600
   negatifLambatAwal: 400
   negatifKurangAwal: 50
   famepoinGiftxtotal: 10
