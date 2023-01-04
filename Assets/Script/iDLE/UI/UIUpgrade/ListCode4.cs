@@ -11,17 +11,17 @@ public class ListCode4 : MonoBehaviour
     [SerializeField]private int hargakoin,hargafamepoint;
     private int leveltf, levelbiaya, levelfamepoin, totalkoinpemain;
 
-    public GameObject tempatSama, inginBeli, yakinBeli, udaBeli, Bank, tidakbisaBank, yakinTransfer, muteSFX, muteBGM;
+    public GameObject tempatSama, inginBeli, yakinBeli, udaBeli, Bank, tidakbisaBank, yakinTransfer, muteSFX, muteBGM, belumBeli;
 
     public GameObject pick1,pick2,pick3,pick4;
     [SerializeField]private TextMeshProUGUI tf, biaya, famepoin;
 
     public GameObject loadscreen;
-    LoadingScreen load;
+    LoadingScreen2 load;
 
     private void Awake() {
         players = player.GetComponent<Player>();
-        load = loadscreen.GetComponent<LoadingScreen>();
+        load = loadscreen.GetComponent<LoadingScreen2>();
     }
 
     // Start is called before the first frame update
@@ -31,12 +31,14 @@ public class ListCode4 : MonoBehaviour
         
 
         tempatSama.gameObject.SetActive(false);
+        // bangun.gameObject.SetActive(false);
         inginBeli.gameObject.SetActive(false);
         yakinBeli.gameObject.SetActive(false);
         udaBeli.gameObject.SetActive(false);
 
         Bank.gameObject.SetActive(false);
         tidakbisaBank.gameObject.SetActive(false);
+        belumBeli.gameObject.SetActive(false);
         yakinTransfer.gameObject.SetActive(false);
         pick1.gameObject.SetActive(false);
         pick2.gameObject.SetActive(false);
@@ -79,6 +81,10 @@ public class ListCode4 : MonoBehaviour
             udaBeli.gameObject.SetActive(true);
         }
     }
+    //kalo Palembang ga updet
+    // public void sedangbangun(){
+    //     bangun.gameObject.SetActive(false);
+    // }
     //Kalo klik plmbng belum beli
     public void yestekaninginbeli(){
         inginBeli.gameObject.SetActive(false);
@@ -144,7 +150,16 @@ public class ListCode4 : MonoBehaviour
     }
     public void yesTransfer(){
         Bank.gameObject.SetActive(false);
-        yakinTransfer.gameObject.SetActive(true);
+        if(!players.getBeliPalembang()){
+            belumBeli.gameObject.SetActive(true);
+        }
+        else{
+            yakinTransfer.gameObject.SetActive(true);
+        }
+        
+    }
+    public void okbelumbeli(){
+        belumBeli.gameObject.SetActive(false);
     }
     public void noTransfer(){
         Bank.gameObject.SetActive(false);

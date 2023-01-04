@@ -29,6 +29,13 @@ public class Player : MonoBehaviour
 
         playernotenough.gameObject.SetActive(false);
         
+        if (PlayerPrefs.HasKey("boolTempat") == false)
+        {
+            
+            PlayerPrefs.SetInt("boolTempat", 1);
+            koinDarah = 700;
+            //loadLevel();
+        }
         
         //ya ini ntr dibarengin ama kalo load save aja kali jd abis load save ditambah transfer
         if(tempat == "Palembang"){

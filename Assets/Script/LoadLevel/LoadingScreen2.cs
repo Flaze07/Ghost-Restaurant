@@ -4,33 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadingScreen : MonoBehaviour
+public class LoadingScreen2 : MonoBehaviour
 {
     // Start is called before the first frame update
     // public void aaa(){
     //     Debug.Log("Hi");
     // }
-    public GameObject click;
-    public GameObject load;
+
     public Slider slide;
     void Start()
     {
-        click.gameObject.SetActive(true);
-        load.gameObject.SetActive(false);
+
         slide.gameObject.SetActive(false);
     }
     public void loadPlace()
     {
-        click.gameObject.SetActive(false);
-        load.gameObject.SetActive(true);
+
         slide.gameObject.SetActive(true);
-        if (PlayerPrefs.HasKey("boolTempat") == false)
-        {
-            
-            StartCoroutine(LoadAsync("Tutorial"));
-            //loadLevel();
-        }
-        else if(PlayerPrefs.GetInt("boolTempat") == 1)
+        if(PlayerPrefs.GetInt("boolTempat") == 1)
         {
             //loadLevel();
             // Debug.Log("Clicked");
