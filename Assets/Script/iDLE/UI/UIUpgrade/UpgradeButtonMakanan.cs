@@ -45,10 +45,14 @@ public class UpgradeButtonMakanan : MonoBehaviour
         if(rank == 1){
             image1.gameObject.SetActive(true);
             image2.gameObject.SetActive(false);
+            imageI1.gameObject.SetActive(true);
+            imageI2.gameObject.SetActive(false);
         }
         else{
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(true);
+            imageI1.gameObject.SetActive(false);
+            imageI2.gameObject.SetActive(true);
         }
 
         if(lvl == 0){
@@ -72,6 +76,8 @@ public class UpgradeButtonMakanan : MonoBehaviour
         if(rank == 2){
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(true);
+            imageI1.gameObject.SetActive(false);
+            imageI2.gameObject.SetActive(true);
         }
         if(rank == 2 && lvl == 25){
             Button.gameObject.SetActive(false);

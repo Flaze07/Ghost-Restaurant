@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private string nama;
     [SerializeField] private string tempat;
     [SerializeField]private bool udaBeliPalembang;
-    private int koinDarah = 10000 ;
+    private int koinDarah = 10000000 ;
     private int famePoint = 0;
     private int hargaKerakTelorAwal = 1;
     private int hargaKerakTelorAkhir;

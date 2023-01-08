@@ -48,10 +48,14 @@ public class UpgradeButtonToko : MonoBehaviour
         if(rank == 1){
             image1.gameObject.SetActive(true);
             image2.gameObject.SetActive(false);
+            imageI1.gameObject.SetActive(true);
+            imageI2.gameObject.SetActive(false);
         }
         else{
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(true);
+            imageI1.gameObject.SetActive(false);
+            imageI2.gameObject.SetActive(true);
         }
 
 
@@ -77,6 +81,8 @@ public class UpgradeButtonToko : MonoBehaviour
         if(rank == 2){
             image1.gameObject.SetActive(false);
             image2.gameObject.SetActive(true);
+            imageI1.gameObject.SetActive(false);
+            imageI2.gameObject.SetActive(true);
         }
         if((tokox == 0 && rank == 2 && lvl == 5) || ((tokox>=1 && tokox<=4) && rank == 2 && lvl == 20) || ((tokox>=5 && tokox<=7) && rank == 2 && lvl == 25) || ((tokox>=8 && tokox<=11) && rank == 1 && lvl == 20)){
             Button.gameObject.SetActive(false);
