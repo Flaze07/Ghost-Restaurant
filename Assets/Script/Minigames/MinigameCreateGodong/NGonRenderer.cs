@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace MasakGodong {
 
@@ -33,16 +34,68 @@ public class NGonRenderer : MonoBehaviour
     
     Material lineMaterial;
 
+    Color lineColor;
+
+    void OnEnable()
+     {
+         RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
+     }
+     void OnDisable()
+     {
+         RenderPipelineManager.endCameraRendering -= RenderPipelineManager_endCameraRendering;
+     }
+     private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext context, Camera camera)
+     {
+        drawLines();
+     }
+
     // Start is called before the first frame update
     void Start()
     {    
         lineMaterial = null;
+        lineColor = new Color(0.70588f, 1, 0.831373f, 1);
+
+        pointCount = pointPositions.Length;
+        
+        quads = new Quad[pointCount];
+
+        for(int i = 0; i < pointCount; ++i)
+        {
+            float a = i / (float) pointCount;
+
+            float angle = a * Mathf.PI * 2;
+
+            float x = radius * Mathf.Cos(angle);
+            float y = radius * Mathf.Sin(angle);
+
+            pointPositions[i] = new Vector2(x, y); 
+        }
+
+        for(int i = 1; i <= pointCount; i++) {
+            Vector2 first;
+            Vector2 second;
+            if(i == pointCount) {
+                first = pointPositions[i-1];
+                second = pointPositions[0];
+            } else {
+                first = pointPositions[i-1];
+                second = pointPositions[i];
+            }
+
+            quads[i-1] = new Quad();
+            
+            quads[i-1].bottomLeft = generateWidth(first, second, true);
+            quads[i-1].bottomRight = generateWidth(first, second, false);
+
+            quads[i-1].topLeft = generateWidth(second, first, true);
+            quads[i-1].topRight = generateWidth(second, first, false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // drawLines();
     }
 
     /**
@@ -90,7 +143,7 @@ public class NGonRenderer : MonoBehaviour
 
     void CreateLineMaterial() 
     {
-        if(!lineMaterial) {
+        if(lineMaterial == null) {
             Shader shader = Shader.Find("Hidden/Internal-Colored");
 
             lineMaterial = new Material(shader);
@@ -110,13 +163,13 @@ public class NGonRenderer : MonoBehaviour
     {
         CreateLineMaterial();
 
-        lineMaterial.SetPass(0);
-
         GL.PushMatrix();
+        lineMaterial.SetPass(0);
 
         GL.MultMatrix(transform.localToWorldMatrix);
 
         GL.Begin(GL.QUADS);
+        GL.Color(Color.cyan);
 
         drawQuad();
 
@@ -201,10 +254,6 @@ public class NGonRenderer : MonoBehaviour
         drawLines();
     }
 
-    public void OnRenderObject() 
-    {
-        drawLines();
-    }
     public int PointInLines(Vector2 point)
     {
         int line = -1;

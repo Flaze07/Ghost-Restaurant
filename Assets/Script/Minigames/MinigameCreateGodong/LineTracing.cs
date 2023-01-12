@@ -32,62 +32,109 @@ public class LineTracing : MonoBehaviour
     public GameObject perfectGodong;
     public GameObject burntGodong;
     public GameObject rawGodong;
+    public CookingGodongManager manager;
+
+    bool doTracing;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-       lines = GetComponent<NGonRenderer>(); 
+        lines = GetComponent<NGonRenderer>(); 
 
-       currentLine = -1;
+        currentLine = -1;
+
+        doTracing = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentLine >= 0) {
+        if(!doTracing)
+        {
+            return;
+        }
+        if(currentLine >= 0) 
+        {
             timeTaken += Time.deltaTime;
+            if(timeTaken > timeHigher) 
+            {
+                burntGodong.SetActive(true);
+                manager.TraceFail();
+                doTracing = false;
+            }
         }
     }
 
     public void HandleTouchBegin(Vector2 position) 
     {
+        if(!doTracing)
+        {
+            return;
+        }
         Vector2 touchWorldSpace = cam.ScreenToWorldPoint(position); 
         int temp = lines.PointInLines(touchWorldSpace);
-        if(temp != 0) {
-            Debug.Log("Failure");
-        } else {
+        if(temp == 0)
+        {
             currentLine = 0;
         }
     }
 
-    public void HandleTouchMoved(Vector2 position) {
+    public void HandleTouchMoved(Vector2 position) 
+    {
+        if(!doTracing)
+        {
+            return;
+        }
         Vector2 touchWorldSpace = cam.ScreenToWorldPoint(position);
         int temp = lines.PointInLines(touchWorldSpace);
-        if(temp < currentLine) {
-            Debug.Log("Failure");
-        } else {
+        if(temp < currentLine) 
+        {
+            rawGodong.SetActive(true);
+            manager.TraceFail();
+            doTracing = false;
+        } 
+        else 
+        {
             currentLine = temp;
         }
 
-        if(timeTaken > timeHigher) {
-            burntGodong.SetActive(true);
-        }
 
-        if(lines.IsLast(temp)) {
-            if(timeTaken < timeLower) {
+        if(lines.IsLast(temp)) 
+        {
+            if(timeTaken < timeLower) 
+            {
                 rawGodong.SetActive(true);
-            } else {
+                manager.TraceFail();
+                doTracing = false;
+            }
+            else 
+            {
                 perfectGodong.SetActive(true);
+                manager.TraceSucceed();
+                doTracing = false;
             }
         }
     }
 
-    public void HandleTouchMoved(Touch touch) {
-        
+    public void HandleTouchStopped(Vector2 position) 
+    {
+        if(!doTracing || currentLine == -1 || perfectGodong.activeSelf)
+        {
+            return;
+        }
+        rawGodong.SetActive(true);
+        manager.TraceFail();
+        doTracing = false;
     }
 
-    public void HandleTouchStopped(Touch touch) {
-        
+    public void Reset()
+    {
+        burntGodong.SetActive(false);
+        rawGodong.SetActive(false);
+        perfectGodong.SetActive(false);
+        timeTaken = 0;
+        doTracing = true;
+        currentLine = -1;
     }
 }

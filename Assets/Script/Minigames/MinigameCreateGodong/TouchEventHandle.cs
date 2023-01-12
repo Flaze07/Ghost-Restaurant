@@ -16,16 +16,25 @@ public class TouchEventHandle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0) {
+        if(Input.touchCount > 0) 
+        {
             Touch touch = Input.GetTouch(0);
 
-            if(touch.phase == TouchPhase.Began) {
+            if(touch.phase == TouchPhase.Began) 
+            {
                 lineTracing.HandleTouchBegin(touch.position);
-            } else if(touch.phase == TouchPhase.Moved) {
+            } 
+            else if(touch.phase == TouchPhase.Moved) 
+            {
                 lineTracing.HandleTouchMoved(touch.position);
             }
+            else if(touch.phase == TouchPhase.Ended)
+            {
+                lineTracing.HandleTouchStopped(touch.position);
+            }
         }
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0)) 
+        {
             lineTracing.HandleTouchBegin(Input.mousePosition);
         }
     }
