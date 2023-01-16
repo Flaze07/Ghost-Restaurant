@@ -19,9 +19,13 @@ public class ListCode4 : MonoBehaviour
     public GameObject loadscreen;
     LoadingScreen2 load;
 
+    public GameObject musiccontroler;
+    MusicControl mc;
+
     private void Awake() {
         players = player.GetComponent<Player>();
         load = loadscreen.GetComponent<LoadingScreen2>();
+        mc = musiccontroler.GetComponent<MusicControl>();
     }
 
     // Start is called before the first frame update
@@ -265,15 +269,22 @@ public class ListCode4 : MonoBehaviour
 
     //ini entar ya ada pengaturan musik, bgm ya bgm 1 aja, sfx ya sfx aja 1 aja sfx koin, ama sfx boss i guess
     public void muteBGm(){
+        mc.turnoffBGM();
         muteBGM.gameObject.SetActive(true);
+        
     }
     public void unmuteBGm(){
+        mc.turnonBGM();
         muteBGM.gameObject.SetActive(false);
+        
     }
     public void muteSFx(){
+        mc.turnoffSFX();
         muteSFX.gameObject.SetActive(true);
+        
     }
     public void unmuteSFx(){
+        mc.turnonSFX();
         muteSFX.gameObject.SetActive(false);
     }
 }

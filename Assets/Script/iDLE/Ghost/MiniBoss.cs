@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class MiniBoss : MonoBehaviour
 {
     [SerializeField] private  float waktuDatangAwal;
@@ -46,6 +47,9 @@ public class MiniBoss : MonoBehaviour
     GhostIdentity G6;
     GhostIdentity G7;    
     int n;//biar ngitung ga berkali kali...
+
+
+    [SerializeField] private AudioSource SFXdatang;
     private void Awake() {
         tokoupgrade = player.GetComponent<Toko>();
 
@@ -108,6 +112,7 @@ public class MiniBoss : MonoBehaviour
         if(transform.position == pos2.position){
             timer = simpanWaktu1;
             udasampe = true;
+            SFXdatang.Play();
             if(n==1){
                 sampai();
                 n= n-1;;
@@ -165,12 +170,18 @@ public class MiniBoss : MonoBehaviour
     public void yeslayani(){
         // code utk next scene, yg nanti di random antara minigame 1 ato 2
         // trus tutup gameobjectnya
+        SFXdatang.Stop();
         yesnoquestion.gameObject.SetActive(false);
         buttonghost.gameObject.SetActive(false);
         gambar.gameObject.SetActive(false);
         transform.position = pos1.position;
         udasampe = false;
         sampai();
+
+
+        //Inidata dari si ritualplace
+        int upgradeakhirtokoritual = tokoupgrade.getDataMiniGame(1);
+        SceneManager.LoadScene("MinigameCookingGodong");
     }
 
     public void nolayani(){

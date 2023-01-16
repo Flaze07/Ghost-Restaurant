@@ -27,7 +27,7 @@ public class LoadingScreen : MonoBehaviour
         if (PlayerPrefs.HasKey("boolTempat") == false)
         {
             
-            StartCoroutine(LoadAsync("Tutorial"));
+            StartCoroutine(LoadAsync("Jakarta"));
             //loadLevel();
         }
         else if(PlayerPrefs.GetInt("boolTempat") == 1)
@@ -40,7 +40,7 @@ public class LoadingScreen : MonoBehaviour
         {
             //loadLevel();
             // Debug.Log("Clicked");
-            StartCoroutine(LoadAsync("Palembang"));
+            StartCoroutine(LoadAsync("Jakarta"));
         }
         
         // click.gameObject.SetActive(false);

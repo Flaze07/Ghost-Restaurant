@@ -17,6 +17,14 @@ public class GhostBehavio : MonoBehaviour
 
     private int numberRandom;
     private float kecepatan, jarak11, jarak12, jarak21, jarak22;
+
+
+    //sprite object
+    public GameObject gambar1, gambar2;
+
+    [SerializeField] private AudioSource koin;
+
+
     private void Awake() {
         GhostID = GetComponentInParent<GhostIdentity>();
     }
@@ -31,6 +39,9 @@ public class GhostBehavio : MonoBehaviour
         tujuan = pos1.position;
         adaUpgrade1 = false;
         numberRandom = 1;
+
+        gambar1.gameObject.SetActive(true);
+        gambar2.gameObject.SetActive(false);
         // kecepatan = 0;
     }
 
@@ -50,6 +61,8 @@ public class GhostBehavio : MonoBehaviour
                 if(numberRandom == 2){
                     transform.Rotate(0, 180, 0);
                 }
+                gambar1.gameObject.SetActive(true);
+                gambar2.gameObject.SetActive(false);
                 numberRandom = Random.Range(1,3);
                 // Debug.Log("2gas");
                 // Debug.Log("1" + numberRandom);
@@ -77,7 +90,9 @@ public class GhostBehavio : MonoBehaviour
                 if(timer <=0){
                     GhostID.beli();
                     timer = simpanWaktu2;
-                        
+                    gambar2.gameObject.SetActive(true);
+                    gambar1.gameObject.SetActive(false);
+                    koin.Play();
                     if(numberRandom == 1){
                         kecepatan = jarak12/simpanWaktu3;
                         tujuan = pos2.position;
