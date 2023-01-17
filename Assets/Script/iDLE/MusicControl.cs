@@ -67,7 +67,7 @@ public class MusicControl : MonoBehaviour
     {
         float nilaiVolBGM = PlayerPrefs.GetFloat("saveBGM");
         float nilaiVolSFX = PlayerPrefs.GetFloat("saveSFX");
-        float nilaiVolSFXB = PlayerPrefs.GetFloat("nilaivolboss");
+        float nilaiVolSFXB = PlayerPrefs.GetFloat("saveSFXBoss");
         BGM.volume = nilaiVolBGM;
         SFXKoin1.volume = nilaiVolSFX;
         SFXKoin2.volume = nilaiVolSFX;

@@ -112,8 +112,9 @@ public class MiniBoss : MonoBehaviour
         if(transform.position == pos2.position){
             timer = simpanWaktu1;
             udasampe = true;
-            SFXdatang.Play();
+            
             if(n==1){
+                SFXdatang.Play();
                 sampai();
                 n= n-1;;
                 // Debug.Log("n = "+ n);
@@ -170,7 +171,7 @@ public class MiniBoss : MonoBehaviour
     public void yeslayani(){
         // code utk next scene, yg nanti di random antara minigame 1 ato 2
         // trus tutup gameobjectnya
-        SFXdatang.Stop();
+        // SFXdatang.Stop();
         yesnoquestion.gameObject.SetActive(false);
         buttonghost.gameObject.SetActive(false);
         gambar.gameObject.SetActive(false);
