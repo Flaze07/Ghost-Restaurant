@@ -182,6 +182,8 @@ public class MiniBoss : MonoBehaviour
 
         //Inidata dari si ritualplace
         int upgradeakhirtokoritual = tokoupgrade.getDataMiniGame(1);
+        MinigameManager miniManager = GameObject.FindWithTag("MinigameManager").GetComponent<MinigameManager>();
+        miniManager.fameUpgrade = upgradeakhirtokoritual;
         SceneManager.LoadScene("MinigameCookingGodong");
     }
 

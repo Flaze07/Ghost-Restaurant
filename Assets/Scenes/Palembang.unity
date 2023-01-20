@@ -4439,6 +4439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9787678fb54dc4d9d9195866770d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  load: {fileID: 0}
+  slide: {fileID: 0}
 --- !u!114 &204857937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6506,6 +6509,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &320758248
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 829.68317
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 953.1563
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20.323608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798976084793059122, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151911262434338053, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
+      propertyPath: m_Name
+      value: MinigameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 671292217c0e83f42bddbbde9a9d781b, type: 3}
 --- !u!1 &323851579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6832,6 +6892,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 0.3
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -6854,6 +6915,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!1 &357262878
 GameObject:
   m_ObjectHideFlags: 0
@@ -14998,6 +15062,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9787678fb54dc4d9d9195866770d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  load: {fileID: 0}
+  slide: {fileID: 0}
 --- !u!114 &825199250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18807,6 +18874,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 4.2
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -18829,6 +18897,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!1 &1000058266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4579400759314441744, guid: a3cdaa730f0312547accc4165d1cc108, type: 3}
@@ -18897,6 +18968,7 @@ MonoBehaviour:
   Ghost5: {fileID: 1882555368}
   Ghost6: {fileID: 1737706188}
   Ghost7: {fileID: 1956103059}
+  SFXdatang: {fileID: 0}
   miniT: {fileID: 1854363457}
   lambatT: {fileID: 1214869649}
   kurangT: {fileID: 1789259559}
@@ -20039,6 +20111,7 @@ MonoBehaviour:
   pegangan1: {fileID: 92283479}
   pegangan2: {fileID: 1881778772}
   dropdown: {fileID: 1673561605}
+  playernotenough: {fileID: 0}
 --- !u!212 &1056924366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20119,6 +20192,7 @@ MonoBehaviour:
   hargaawal: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   upgrade_awal: 0100000002000000050000000c0000001500000023000000330000007a000000fa0000003701000000020000c1020000
   hitunganx: 010000000200000003000000070000000b0000000c0000000d000000110000001500000016000000170000001b000000
+  hitunganhargax: 
 --- !u!114 &1056924368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20145,6 +20219,7 @@ MonoBehaviour:
   - Kebun
   - Gramophone
   hargaawal: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  hitunganharga: 
   upgrade_awal:
   - 1
   - 2
@@ -26504,6 +26579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1466423287}
+  - component: {fileID: 1466423288}
   m_Layer: 0
   m_Name: Gameplay
   m_TagString: Untagged
@@ -26533,6 +26609,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1466423288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466423286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ac2223601ade24a973ba22d690f417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1469811167 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3893135653255709507, guid: a3cdaa730f0312547accc4165d1cc108, type: 3}
@@ -30252,6 +30340,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 0.2
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -30274,6 +30363,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!114 &1592132229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3893135652382355685, guid: a3cdaa730f0312547accc4165d1cc108, type: 3}
@@ -31572,6 +31664,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 0.1
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -31594,6 +31687,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!1 &1679192899
 GameObject:
   m_ObjectHideFlags: 0
@@ -32809,6 +32905,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 3
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -32831,6 +32928,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!1 &1740654006
 GameObject:
   m_ObjectHideFlags: 0
@@ -36142,6 +36242,7 @@ MonoBehaviour:
   yakinTransfer: {fileID: 743592554}
   muteSFX: {fileID: 1749480882}
   muteBGM: {fileID: 906130046}
+  belumBeli: {fileID: 0}
   pick1: {fileID: 701762148}
   pick2: {fileID: 950766672}
   pick3: {fileID: 1026447742}
@@ -36150,6 +36251,7 @@ MonoBehaviour:
   biaya: {fileID: 33435778}
   famepoin: {fileID: 2039118881}
   loadscreen: {fileID: 825199247}
+  musiccontroler: {fileID: 0}
 --- !u!1 &1859378917
 GameObject:
   m_ObjectHideFlags: 0
@@ -36546,6 +36648,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 1.2
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -36568,6 +36671,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!1 &1882727395 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3893135653183100957, guid: a3cdaa730f0312547accc4165d1cc108, type: 3}
@@ -37869,6 +37975,7 @@ MonoBehaviour:
   hitunganwaktuDatang: 4.2
   hargaKoinUpgradeawal: 0
   hargaFPUpgradeawal: 0
+  hitunganhargaKoinUpgrade: 0
   player: {fileID: 1056924363}
   miniboss: {fileID: 1000091194}
   adaUpgradetoko: 0
@@ -37891,6 +37998,9 @@ MonoBehaviour:
   tengah2: {fileID: 307925906}
   pos2: {fileID: 1176003272}
   adaUpgrade1: 0
+  gambar1: {fileID: 0}
+  gambar2: {fileID: 0}
+  koin: {fileID: 0}
 --- !u!1 &1959641990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3893135653089754074, guid: a3cdaa730f0312547accc4165d1cc108, type: 3}

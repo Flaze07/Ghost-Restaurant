@@ -12,7 +12,7 @@ public class CookingGodongManager : MonoBehaviour
     public TextMeshPro godongCountLabel;
 
     [Header("Mistakes")]
-    int failureCount;
+    public int failureCount;
     public GameObject[] mistakes;
 
     [Header("Result")]
@@ -80,8 +80,7 @@ public class CookingGodongManager : MonoBehaviour
         mistakes[failureCount - 1].SetActive(true);
         if(failureCount == 3)
         {
-            minigameStatus = 1;
-            failParent.SetActive(true);
+            TraceCompletedFail();
         }
         cross.SetActive(true);
         StartCoroutine(CoroutineShowResult());
@@ -89,6 +88,18 @@ public class CookingGodongManager : MonoBehaviour
 
         godongCount -= 1;
         godongCountLabel.text = godongCount.ToString();
+    }
+
+    void TraceCompletedFail()
+    {
+        minigameStatus = 1;
+        failParent.SetActive(true);
+        MinigameManager miniManager = GameObject.FindWithTag("MinigameManager").GetComponent<MinigameManager>();
+        miniManager.fromMinigame = true;
+        miniManager.coinChanges = -250;
+        miniManager.fameChanges = -25;
+        failFame.text = miniManager.coinChanges.ToString();
+        failCoin.text  = miniManager.fameChanges.ToString();
     }
 
     public void TraceSucceed() 
@@ -101,26 +112,55 @@ public class CookingGodongManager : MonoBehaviour
         godongCount -= 1;
         if(godongCount == 0)
         {
-            minigameStatus = 2;
-            succeedParent.SetActive(true);
-            if(failureCount > 0)
-            {
-                succeedMist1.SetActive(true);
-            }
-            if(failureCount > 1)
-            {
-                succeedMist2.SetActive(true);
-            }
-            if(failureCount > 2)
-            {
-                //this code shouldn't be possible to be entered
-                Debug.Log("WITCH CRAFT");
-            }
+            TraceCompletedSucceed();
         }
         StartCoroutine(CoroutineShowResult());
         resultActive = true;
 
         godongCountLabel.text = godongCount.ToString();
+    }
+
+    void TraceCompletedSucceed()
+    {
+        MinigameManager miniManager = GameObject.FindWithTag("MinigameManager").GetComponent<MinigameManager>();
+        minigameStatus = 2;
+        succeedParent.SetActive(true);
+        int coinAddition = 0;
+        int famePercent = 0;
+        if(failureCount == 0)
+        {
+            coinAddition = 450;
+            famePercent = 100;
+        }
+        else if(failureCount > 0)
+        {
+            succeedMist1.SetActive(true);
+            coinAddition = 350;
+            famePercent = 75;
+        }
+        else if(failureCount > 1)
+        {
+            succeedMist2.SetActive(true);
+            coinAddition = 150;
+            famePercent = 25;
+        }
+        else if(failureCount > 2)
+        {
+            //this code shouldn't be possible to be entered
+            Debug.Log("WITCH CRAFT");
+        }
+
+        /**
+         * Handle minigame manager to be loaded from
+         * main game scene
+         */
+        miniManager.fromMinigame = true;
+        miniManager.fameChanges = (12 + miniManager.fameUpgrade) * famePercent;
+        miniManager.fameChanges = miniManager.fameChanges / 100;
+        miniManager.coinChanges = coinAddition;
+
+        succeedFame.GetComponent<TMP_Text>().text = miniManager.fameChanges.ToString();
+        succeedCoin.GetComponent<TMP_Text>().text = miniManager.coinChanges.ToString();
     }
 
 

@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     [SerializeField]private GameObject pegangan1,pegangan2,dropdown;
     [SerializeField]private GameObject playernotenough;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +69,12 @@ public class Player : MonoBehaviour
         hargaT.text = hargaKerakTelorAkhir.ToString();
         koinT.text = koinDarah.ToString();
         FPT.text = famePoint.ToString();
+
+        /**
+         * loading data dari PersistentGameData setelah siap minigame
+         */
+        
+        // GameObject.FindWithTag("Persistent").GetComponent<PersistentGameData>().player = GetComponent<Player>();
     }
 
     private void counting(){

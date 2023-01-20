@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FailButton : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class FailButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("Loser");
+        SceneManager.LoadScene("Jakarta");
     }
 
     //-250 koin -25 fp
