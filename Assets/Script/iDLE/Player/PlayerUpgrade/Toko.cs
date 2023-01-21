@@ -150,8 +150,30 @@ public class Toko : MonoBehaviour
         return nama[x];
     }
 
+    public int getBanyakToko()
+    {
+        return nama.Length;
+    }
 
+    public void setRankToko(int idx, int x)
+    {
+        Rank[idx] = x;
+    }
+
+    public void setHarga(int idx, int x)
+    {
+        hargaAkhir[idx] = x;
+    }
+
+    public void setNameToko(int idx, string x)
+    {
+        nama[idx] = x;
+    }
     
+    public void setLevel(int idx, int x)
+    {
+        level[idx] = x;
+    }
 
     public void upgradeToko(int x){
 

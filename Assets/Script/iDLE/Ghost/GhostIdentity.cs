@@ -139,6 +139,11 @@ public class GhostIdentity : MonoBehaviour
         return hargaFPUpgradeAkhir;
     }
 
+    public void setLevel(int level)
+    {
+        levelUpgrade = level;
+    }
+
 
     public void upgrade_Level(){ //INI buat button Upgrade
         if(levelUpgrade == 20){

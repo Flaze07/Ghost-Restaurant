@@ -8,16 +8,16 @@ public class Player : MonoBehaviour
     [SerializeField] private string nama;
     [SerializeField] private string tempat;
     [SerializeField]private bool udaBeliPalembang;
-    private int koinDarah = 0 ;
-    private int famePoint = 0;
+    [SerializeField] private int koinDarah = 0 ;
+    [SerializeField] private int famePoint = 0;
     private int hargaKerakTelorAwal = 1;
     private int hargaKerakTelorAkhir;
 
-    [SerializeField]private TextMeshProUGUI NilaiHarga, NilaiKoin, NilaiFP;
-    [SerializeField]private TextMeshProUGUI Nama, hargaT, koinT, FPT;
+    public TextMeshProUGUI NilaiHarga, NilaiKoin, NilaiFP;
+    public TextMeshProUGUI Nama, hargaT, koinT, FPT;
 
-    [SerializeField]private GameObject pegangan1,pegangan2,dropdown;
-    [SerializeField]private GameObject playernotenough;
+    public GameObject pegangan1,pegangan2,dropdown;
+    public GameObject playernotenough;
 
     // Start is called before the first frame update
     void Start()
@@ -75,8 +75,53 @@ public class Player : MonoBehaviour
          */
         
         // GameObject.FindWithTag("Persistent").GetComponent<PersistentGameData>().player = GetComponent<Player>();
+        
+        LoadSave();
+        InitiateAutoSave();
     }
 
+    void LoadSave()
+    {
+        SavingData.ghostCount = 7;
+        BahanMakanan bm = GetComponent<BahanMakanan>();
+        Toko t = GetComponent<Toko>();
+
+        GhostIdentity[] gi = new GhostIdentity[SavingData.ghostCount];
+        gi[0] = t.Ghost1.GetComponent<GhostIdentity>();
+        gi[1] = t.Ghost2.GetComponent<GhostIdentity>();
+        gi[2] = t.Ghost3.GetComponent<GhostIdentity>();
+        gi[3] = t.Ghost4.GetComponent<GhostIdentity>();
+        gi[4] = t.Ghost5.GetComponent<GhostIdentity>();
+        gi[5] = t.Ghost6.GetComponent<GhostIdentity>();
+        gi[6] = t.Ghost7.GetComponent<GhostIdentity>();
+
+        Player p = GetComponent<Player>();
+        SavingData.LoadData(bm, t, gi, p);
+    }
+
+    void InitiateAutoSave()
+    {
+        InvokeRepeating("AutoSave", 0.0f, 60.0f);
+    }
+
+    void AutoSave()
+    {
+        BahanMakanan bm = GetComponent<BahanMakanan>();
+        Toko t = GetComponent<Toko>();
+
+        GhostIdentity[] gi = new GhostIdentity[SavingData.ghostCount];
+        gi[0] = t.Ghost1.GetComponent<GhostIdentity>();
+        gi[1] = t.Ghost2.GetComponent<GhostIdentity>();
+        gi[2] = t.Ghost3.GetComponent<GhostIdentity>();
+        gi[3] = t.Ghost4.GetComponent<GhostIdentity>();
+        gi[4] = t.Ghost5.GetComponent<GhostIdentity>();
+        gi[5] = t.Ghost6.GetComponent<GhostIdentity>();
+        gi[6] = t.Ghost7.GetComponent<GhostIdentity>();
+
+        Player p = GetComponent<Player>();
+
+        SavingData.SaveData(bm, t, gi, p);
+    }
     private void counting(){
         float harga, koin, fp;
         if(hargaKerakTelorAkhir >= 1000000000){
@@ -191,14 +236,20 @@ public class Player : MonoBehaviour
         //Ntr ada Canvas d sini yg blg not enough begitu.
     }
 
-
-
-
-
     public int getHarga(){ //Kalo org mo beli kan cek ini
         return hargaKerakTelorAkhir;
     }
     public void changeHarga(int hargaKT){ //masukkin + - kalo mo pake
         hargaKerakTelorAkhir = hargaKerakTelorAwal + hargaKT;
+    }
+
+    public void setKoin(int x)
+    {
+        koinDarah = x;
+    }
+
+    public void setFP(int x)
+    {
+        famePoint = x;
     }
 }

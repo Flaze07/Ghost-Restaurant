@@ -67,7 +67,6 @@ public class UpgradeButtonMakanan : MonoBehaviour
         string nama = bahanmakanan.getName(bahanmakananx);
         Nama1.text = nama;
         textchange();
-        
     }
 
     // Update is called once per frame

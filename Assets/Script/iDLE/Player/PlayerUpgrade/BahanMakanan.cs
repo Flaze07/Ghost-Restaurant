@@ -25,7 +25,6 @@ public class BahanMakanan : MonoBehaviour
 
     private void Awake() {
         player = GetComponentInParent<Player>();
-        
     }
     
     
