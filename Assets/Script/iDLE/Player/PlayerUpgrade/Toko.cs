@@ -20,6 +20,8 @@ public class Toko : MonoBehaviour
     [SerializeField] private float[] hitunganx;
     [SerializeField] private float[] hitungany;
 
+    private bool[] berhasilup = {false,false,false,false,false,false,false,false,false,false,false,false};
+
     Player player;
     public GameObject Ghost1;
     
@@ -175,6 +177,10 @@ public class Toko : MonoBehaviour
         level[idx] = x;
     }
 
+
+    public bool berhasiluptoko(int x){
+        return berhasilup[x];
+    }
     public void upgradeToko(int x){
 
         if((x == 0 && level[x] == 30) || ((x>=1 && x<=4) && level[x] == 40) || ((x>=5 && x<=7) && level[x] == 50) || ((x>=8 && x<=11) && level[x] == 20)){
@@ -182,6 +188,9 @@ public class Toko : MonoBehaviour
         }
         else{
             if(player.getKoin()>=hargaAkhir[x]){
+                if(level[x] == 0){
+                    berhasilup[x] = true;
+                }
                 level[x]++;
                 if(((x == 0 || (x>=5 && x<=7)) && level[x] == 26) || ((x>=1 && x<=4) && level[x] == 21)){
                     Rank[x] = 2;
@@ -193,6 +202,7 @@ public class Toko : MonoBehaviour
                 adaUpdateToko = true;
             }
             else{
+                
                 player.notEnough();
             }
         }

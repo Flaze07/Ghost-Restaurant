@@ -24,6 +24,7 @@ public class UpgradeButtonToko : MonoBehaviour
     [SerializeField]private GameObject image1,image2;
 
     // buat si info
+    [SerializeField]private GameObject mainparentinfo;
     [SerializeField]private GameObject InfoCanvas, nextupgrade, Maxlevel, upgradeObject, rankupObject;
     [SerializeField]private TextMeshProUGUI Nama1, RankNum1, LevelNum1, x1, RankNum2, LevelNum2, x2;
     [SerializeField]private GameObject imageI1,imageI2;
@@ -33,7 +34,9 @@ public class UpgradeButtonToko : MonoBehaviour
     }
     void Start()
     {
+        
         InfoCanvas.gameObject.SetActive(false);
+        mainparentinfo.gameObject.SetActive(false);
         Maxlevel.gameObject.SetActive(false);
         Max.gameObject.SetActive(false);
         RankUpButton.gameObject.SetActive(false);
@@ -130,9 +133,13 @@ public class UpgradeButtonToko : MonoBehaviour
         
         toko.upgradeToko(tokox);
         // Debug.Log("cek4");
+        
         if(ButtonText1.gameObject.activeSelf){
-            ButtonText2.gameObject.SetActive(true);
-            ButtonText1.gameObject.SetActive(false);
+            if(toko.berhasiluptoko(tokox)){
+                ButtonText2.gameObject.SetActive(true);
+                ButtonText1.gameObject.SetActive(false);
+            }
+            
         }
         // Debug.Log("cek5");
        
@@ -207,6 +214,7 @@ public class UpgradeButtonToko : MonoBehaviour
 
 
     public void infoButtonMakanan0(){
+        mainparentinfo.gameObject.SetActive(true);
         InfoCanvas.gameObject.SetActive(true);
         // if(rank == 1){
         //     imageI1.gameObject.SetActive(true);
@@ -219,6 +227,7 @@ public class UpgradeButtonToko : MonoBehaviour
     }
     public void backMakanan0(){
         InfoCanvas.gameObject.SetActive(false);
+        mainparentinfo.gameObject.SetActive(false);
     }
 
     

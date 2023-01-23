@@ -12,6 +12,9 @@ public class MusicControl : MonoBehaviour
 
     public GameObject miniboss, ghost1, ghost2, ghost3, ghost4, ghost5, ghost6, ghost7;
 
+    public GameObject aturSFX;
+    ListCode4 lc4;
+
 
 
     // bool BGMs,SFX;
@@ -27,6 +30,8 @@ public class MusicControl : MonoBehaviour
 
         SFXBoss = miniboss.GetComponent<AudioSource>();
 
+        lc4 = aturSFX.GetComponent<ListCode4>();
+
         
     }
     void Start()
@@ -36,13 +41,19 @@ public class MusicControl : MonoBehaviour
 
             PlayerPrefs.SetFloat("saveBGM", 0.5f);
             PlayerPrefs.SetFloat("saveSFX", 0.5f);
-            PlayerPrefs.SetFloat("saveSFXBoss", 0.2f);
+            PlayerPrefs.SetFloat("saveSFXBoss", 0.6f);
             loadVol();
         }
         else
         {
 
             loadVol();
+            if(BGM.volume  == 0){
+                lc4.muteBGMnya();
+            }
+            if(SFXKoin1.volume == 0){
+                lc4.muteSFXnya();
+            }
         }
     }
 
@@ -90,7 +101,7 @@ public class MusicControl : MonoBehaviour
     }
 
     public void turnonSFX(){
-        savechangeVolSFX(0.5f, 0.2f);
+        savechangeVolSFX(0.5f, 0.6f);
 
     }
 

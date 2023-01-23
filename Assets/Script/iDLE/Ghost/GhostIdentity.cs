@@ -52,6 +52,9 @@ public class GhostIdentity : MonoBehaviour
     public GameObject buttonspam;
     ButtonCloneGhost buttonspaam;
 
+    bool berhasilup;
+
+
     void Awake() { //THIS IS ONLY UTK KASIHTAU KE YG LAIN ADA UPGRADE GA AAPLAGI BUAT YG GA ADA HUBUNGANNYA AMA SHOP
         GhostB = GetComponentInParent<GhostBehavio>();
         Players = player.GetComponent<Player>();
@@ -69,6 +72,7 @@ public class GhostIdentity : MonoBehaviour
         adaUpgradetoko = false;
         minidatang = false;
         totalhntuboost = 0;
+        berhasilup = false;
     }
 
     // Update is called once per frame
@@ -144,13 +148,18 @@ public class GhostIdentity : MonoBehaviour
         levelUpgrade = level;
     }
 
-
+    public bool berhasil(){
+        return berhasilup;
+    }
     public void upgrade_Level(){ //INI buat button Upgrade
         if(levelUpgrade == 20){
             Players.sudahMaxUpgrade();
         }
         else{
             if(Players.getKoin() >= hargaKoinUpgradeAkhir && Players.getFP() >= hargaFPUpgradeAkhir){
+                if(levelUpgrade == 0){
+                    berhasilup = true;
+                }
                 levelUpgrade++;
                 Players.changeKoin(-hargaKoinUpgradeAkhir);
                 Players.changeFP(-hargaFPUpgradeAkhir);
@@ -158,7 +167,9 @@ public class GhostIdentity : MonoBehaviour
                 adaUpgrade = true;
             }
             else{
+                
                 Players.notEnough();
+                
             }
         }
         

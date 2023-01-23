@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 158553652}
   - component: {fileID: 158553651}
   - component: {fileID: 158553653}
+  - component: {fileID: 158553654}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -659,6 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91d4b0fb82a012479f383ff0eba9b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM: {fileID: 0}
 --- !u!4 &158553652
 Transform:
   m_ObjectHideFlags: 0
@@ -770,6 +772,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &158553654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158553650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91d4b0fb82a012479f383ff0eba9b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM: {fileID: 158553653}
 --- !u!1 &167152932
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,9 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c563999c227361440b5900824e420e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 3}
-  startVertex: {x: 0, y: 0, z: 0}
-  mousePos: {x: 0, y: 0, z: 0}
 --- !u!1 &184033135
 GameObject:
   m_ObjectHideFlags: 0

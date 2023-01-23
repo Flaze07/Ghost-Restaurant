@@ -22,6 +22,7 @@ public class UpgradeButtonMakanan : MonoBehaviour
     [SerializeField]private GameObject image1,image2;
 
     // buat si info
+    [SerializeField]private GameObject mainparentinfo;
     [SerializeField]private GameObject InfoCanvas, nextupgrade, Maxlevel, upgradeObject, rankupObject;
     [SerializeField]private TextMeshProUGUI Nama1, RankNum1, LevelNum1, x1, RankNum2, LevelNum2, x2;
     [SerializeField]private GameObject imageI1,imageI2;
@@ -30,7 +31,9 @@ public class UpgradeButtonMakanan : MonoBehaviour
     }
     void Start()
     {
+        
         InfoCanvas.gameObject.SetActive(false);
+        mainparentinfo.gameObject.SetActive(false);
         Maxlevel.gameObject.SetActive(false);
         Max.gameObject.SetActive(false);
         RankUpButton.gameObject.SetActive(false);
@@ -114,7 +117,7 @@ public class UpgradeButtonMakanan : MonoBehaviour
     public void upgradetoko(){
         adaupBM = true;
         bahanmakanan.upgrade_levBahan(bahanmakananx);
-        if(ButtonText1.gameObject.activeSelf){
+        if(bahanmakanan.berhasilupbahan(bahanmakananx)){
             ButtonText2.gameObject.SetActive(true);
             ButtonText1.gameObject.SetActive(false);
         }
@@ -151,6 +154,7 @@ public class UpgradeButtonMakanan : MonoBehaviour
 
 
     public void infoButtonMakanan0(){
+        mainparentinfo.gameObject.SetActive(true);
         InfoCanvas.gameObject.SetActive(true);
         // if(rank == 1){
         //     imageI1.gameObject.SetActive(true);
@@ -162,7 +166,9 @@ public class UpgradeButtonMakanan : MonoBehaviour
         // }
     }
     public void backMakanan0(){
+        
         InfoCanvas.gameObject.SetActive(false);
+        mainparentinfo.gameObject.SetActive(false);
     }
 
     

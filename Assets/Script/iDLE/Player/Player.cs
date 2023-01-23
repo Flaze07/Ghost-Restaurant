@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
         {
             
             PlayerPrefs.SetInt("boolTempat", 1);
-            koinDarah = 750;
+            koinDarah = 1250;
+            famePoint = 25;
             //loadLevel();
         }
         

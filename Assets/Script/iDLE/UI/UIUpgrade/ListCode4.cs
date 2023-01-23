@@ -51,18 +51,25 @@ public class ListCode4 : MonoBehaviour
         leveltf = levelbiaya = levelfamepoin = 0;
         //Buat playerprefs~~
         
-        muteSFX.gameObject.SetActive(false);
+        if (PlayerPrefs.HasKey("saveBGM") == false)
+        {
+            muteSFX.gameObject.SetActive(false);
 
-        muteBGM.gameObject.SetActive(false);
+            muteBGM.gameObject.SetActive(false);
+        }
 
         loadscreen.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    //cuma buat d start aja
+    public void muteSFXnya(){
+        muteSFX.gameObject.SetActive(true);
     }
+    public void muteBGMnya(){
+        muteBGM.gameObject.SetActive(true);
+    }
+
+
 
     
 

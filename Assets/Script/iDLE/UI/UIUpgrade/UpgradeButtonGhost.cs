@@ -21,6 +21,7 @@ public class UpgradeButtonGhost : MonoBehaviour
 
 
     // buat si info
+    [SerializeField]private GameObject mainparentinfo;
     [SerializeField]private GameObject InfoCanvas, nextupgrade, Maxlevel, upgradeObject;
     [SerializeField]private TextMeshProUGUI Nama1, LevelNum1, x1, y1, LevelNum2, x2, y2;
     private void Awake() {
@@ -29,6 +30,7 @@ public class UpgradeButtonGhost : MonoBehaviour
     void Start()
     {
         InfoCanvas.gameObject.SetActive(false);
+        mainparentinfo.gameObject.SetActive(false);
         Maxlevel.gameObject.SetActive(false);
         Max.gameObject.SetActive(false);
 
@@ -116,8 +118,11 @@ public class UpgradeButtonGhost : MonoBehaviour
         adaupghost = true;
         ghostid.upgrade_Level();
         if(ButtonText1.gameObject.activeSelf){
-            ButtonText2.gameObject.SetActive(true);
-            ButtonText1.gameObject.SetActive(false);
+            if(ghostid.berhasil()){
+                ButtonText2.gameObject.SetActive(true);
+                ButtonText1.gameObject.SetActive(false);
+            }
+            
         }
     }
 
@@ -140,11 +145,13 @@ public class UpgradeButtonGhost : MonoBehaviour
 
 
     public void infoButtonMakanan0(){
+        mainparentinfo.gameObject.SetActive(true);
         InfoCanvas.gameObject.SetActive(true);
     }
 
     public void backMakanan0(){
         InfoCanvas.gameObject.SetActive(false);
+        mainparentinfo.gameObject.SetActive(false);
     }
 
 }

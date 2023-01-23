@@ -23,6 +23,7 @@ public class BahanMakanan : MonoBehaviour
 
     private bool adaUpdateBahan;
 
+    private bool[] berhasilup = {false,false,false,false,false,false,false,false,false,false,false,false};
     private void Awake() {
         player = GetComponentInParent<Player>();
     }
@@ -158,6 +159,10 @@ public class BahanMakanan : MonoBehaviour
     // }
     // public void upgrade1(){
     //     upgrade_levBahan(0);
+
+    public bool berhasilupbahan(int x){
+        return berhasilup[x];
+    }
     // }
     public void upgrade_levBahan(int x){
         if(level[x]==50){
@@ -165,6 +170,9 @@ public class BahanMakanan : MonoBehaviour
         }
         else{
             if(player.getKoin()>=hargaAkhir[x]){
+                if(level[x] == 0){
+                    berhasilup[x] = true;
+                }
                 level[x]++;
                 if(level[x] == 26){
                     Rank[x] = 2;

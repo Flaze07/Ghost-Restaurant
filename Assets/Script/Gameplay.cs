@@ -38,8 +38,31 @@ public class Gameplay : MonoBehaviour
             {
                 miniManager.fromMinigame = false;
                 Player player = GetComponentInChildren<Player>();
-                player.changeKoin(miniManager.coinChanges);
-                player.changeFP(miniManager.fameChanges);
+                int koin = player.getKoin();
+                int famep = player.getFP();
+                int cekkoin = miniManager.coinChanges;
+                int cekfp = miniManager.fameChanges;
+                if(cekkoin < 0){
+                    cekkoin*= -1;
+                    if(koin >= cekkoin){
+                        player.changeKoin(miniManager.coinChanges);
+                    }
+                }
+                else{
+                    player.changeKoin(miniManager.coinChanges);
+                }
+                if(cekfp < 0){
+                    cekfp*= -1;
+                    if(famep >= cekfp){
+                        player.changeFP(miniManager.fameChanges);
+                    }
+                }
+                else{
+                    player.changeFP(miniManager.fameChanges);
+                }
+                
+                
+                
             }
         }
     }
